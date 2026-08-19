@@ -5389,3 +5389,17 @@ body.subpage .page-hero .shell > p:last-child {
     margin: 0 !important;
   }
 }
+
+
+/* =========================================================
+   FINAL HEADER ACTIONS POSITION
+   Keep socials + CTA pinned to the right column even though
+   the centered nav is absolutely positioned.
+   ========================================================= */
+@media (min-width: 901px) {
+  .header > .header-actions {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    margin-left: auto !important;
+  }
+}
