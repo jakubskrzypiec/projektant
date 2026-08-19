@@ -5368,3 +5368,24 @@ body.subpage .page-hero .shell > p:last-child {
   }
 }
 
+
+/* =========================================================
+   FINAL HEADER NAV CENTERING
+   Keep PROJEKTY / OFERTA / KONTAKT exactly centered in the
+   viewport, independent of the left logo slot and right CTAs.
+   ========================================================= */
+@media (min-width: 901px) {
+  .header {
+    position: fixed;
+  }
+
+  .header > .nav {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    width: max-content !important;
+    transform: translate(-50%, -50%) !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+}
