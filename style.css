@@ -5209,3 +5209,162 @@ body:not(.home) .header {
 .project-card__meta {
   position: absolute !important;
 }
+
+/* =========================================================
+   FINAL CLIENT APPROVAL — HERO + SUBPAGE TYPOGRAPHY
+   Source: client annotations / "NOWE" direction.
+   ========================================================= */
+
+/* Header navigation: Gill Sans MT, larger and bold. */
+.nav a {
+  font-family: var(--body) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase !important;
+}
+
+/* Small hero label: Gill Sans MT, bold. */
+.hero__brand {
+  font-family: var(--body) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+}
+
+/* Main hero: ISOCPEUR, tighter tracking, about +10pt vs the old version. */
+.hero__copy {
+  width: min(1040px, 88vw) !important;
+}
+
+.hero h1 {
+  font-family: var(--display) !important;
+  font-size: clamp(68px, 5.25vw, 96px) !important;
+  font-weight: 400 !important;
+  line-height: 1.02 !important;
+  letter-spacing: .006em !important;
+  text-transform: uppercase !important;
+  font-synthesis: none !important;
+  -webkit-text-stroke: .36px currentColor !important;
+}
+
+.hero h1 .hero__gold {
+  display: inline !important;
+  color: var(--gold) !important;
+  font: inherit !important;
+  font-style: normal !important;
+  letter-spacing: .035em !important;
+  -webkit-text-stroke: .36px var(--gold) !important;
+  text-shadow: 0 7px 22px rgba(40,61,104,.36) !important;
+}
+
+/* Buttons: grow in place; transparent/light buttons turn navy on hover. */
+.drop-button,
+.drop-button:hover,
+.drop-button:focus-visible {
+  transform-origin: center !important;
+}
+
+.drop-button:hover,
+.drop-button:focus-visible {
+  transform: scale(1.055) !important;
+}
+
+.drop-button--light:hover,
+.drop-button--light:focus-visible {
+  background: var(--navy) !important;
+  color: #fff !important;
+}
+
+/* The three requested subpages use the same approved display hierarchy. */
+body.subpage .page-hero {
+  position: relative;
+  padding: calc(var(--header-h) + 82px) 0 82px;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(40,61,104,.10);
+  overflow: hidden;
+}
+
+body.subpage .page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 78% 38%, rgba(124,155,219,.12), transparent 32%);
+}
+
+body.subpage .page-hero .shell {
+  position: relative;
+  z-index: 1;
+}
+
+body.subpage .page-hero .section-label {
+  font-family: var(--body) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: .16em !important;
+  color: var(--navy) !important;
+}
+
+body.subpage .page-hero h1 {
+  margin: 0 0 24px;
+  color: var(--navy);
+  font-family: var(--display) !important;
+  font-size: clamp(76px, 6.2vw, 116px) !important;
+  font-weight: 400 !important;
+  line-height: .92 !important;
+  letter-spacing: .006em !important;
+  text-transform: uppercase !important;
+  font-synthesis: none !important;
+  text-shadow: 0 10px 28px rgba(40,61,104,.10);
+}
+
+body.subpage .page-hero .shell > p:last-child {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: var(--text);
+  font-family: var(--body) !important;
+  font-size: 19px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+@media (max-width: 900px) {
+  .nav a {
+    font-size: 15px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 8.2vw, 76px) !important;
+  }
+
+  body.subpage .page-hero h1 {
+    font-size: clamp(64px, 10vw, 92px) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__copy {
+    width: calc(100vw - 42px) !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 13vw, 62px) !important;
+    line-height: 1.02 !important;
+  }
+
+  .hero h1 .hero__gold {
+    letter-spacing: .022em !important;
+  }
+
+  body.subpage .page-hero {
+    padding: calc(var(--header-h) + 58px) 0 58px;
+  }
+
+  body.subpage .page-hero h1 {
+    font-size: clamp(56px, 16vw, 76px) !important;
+  }
+}
+

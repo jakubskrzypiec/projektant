@@ -41,20 +41,7 @@ navLinks.forEach(link => {
   if (section) navObserver?.observe(section);
 });
 
-/* Hero word */
-const rotatingWord = document.querySelector("[data-rotating-word]");
-const rotatingWords = ["działają.", "uspokajają.", "zostają.", "pasują."];
-let rotatingIndex = 0;
-if (rotatingWord && !reduceMotion) {
-  window.setInterval(() => {
-    rotatingWord.classList.add("is-changing");
-    window.setTimeout(() => {
-      rotatingIndex = (rotatingIndex + 1) % rotatingWords.length;
-      rotatingWord.textContent = rotatingWords[rotatingIndex];
-    }, 290);
-    window.setTimeout(() => rotatingWord.classList.remove("is-changing"), 610);
-  }, 3100);
-}
+/* Hero copy is fixed according to the client-approved layout. */
 
 /* Reveal */
 const revealItems = document.querySelectorAll(".reveal");
