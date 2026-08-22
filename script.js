@@ -354,8 +354,22 @@ const animateDetails = (item, willOpen) => {
   item.style.height = "auto";
   item.style.overflow = "hidden";
 
-  const summaryHeight = summary.getBoundingClientRect().height;
-  const targetHeight = willOpen ? item.scrollHeight : summaryHeight;
+  /* When closing, the resting height is not always the summary height: inside a
+     stretched grid row the tile keeps the height of its neighbours. Measure that
+     real closed height so the panel stops there instead of collapsing all the way
+     down and springing back up. */
+  let targetHeight;
+  if (willOpen) {
+    targetHeight = item.scrollHeight;
+  } else {
+    const wasOpen = item.open;
+    item.open = false;
+    targetHeight = Math.max(
+      summary.getBoundingClientRect().height,
+      item.getBoundingClientRect().height
+    );
+    item.open = wasOpen;
+  }
 
   item.style.height = `${currentHeight}px`;
   item.getBoundingClientRect(); // force current frame
