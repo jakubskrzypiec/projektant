@@ -451,24 +451,46 @@ document.querySelectorAll(".package-card").forEach(item => {
   });
 });
 
-/* Polish typography: keep short one-letter words with the next word */
+/* Polish typography: no hanging one-letter words and no single-word orphans.
+   We leave headings with intentional <br> breaks alone and protect editorial copy only. */
 const typographySelectors = [
   ".rich-copy p",
+  ".section-quote",
+  ".package-card summary p",
   ".package-card__body p",
+  ".package-card__body li",
+  ".process-item small",
   ".process-answer p",
   ".process-answer b",
+  ".faq__list summary",
   ".faq__list details > div p",
+  ".faq__cta p",
   ".contact__lead",
-  ".footer p"
+  ".contact__people em",
+  ".footer p",
+  ".footer__person em"
 ];
-document.querySelectorAll(typographySelectors.join(",")).forEach(node => {
+
+const protectPolishTypography = node => {
   const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
   const textNodes = [];
   while (walker.nextNode()) textNodes.push(walker.currentNode);
+
   textNodes.forEach(textNode => {
     textNode.nodeValue = textNode.nodeValue.replace(/\b([aiouwz])\s+/gi, "$1\u00A0");
   });
-});
+
+  /* Join the final two words of the block. This prevents the last line from
+     ending up with one lonely word after responsive reflow. */
+  for (let index = textNodes.length - 1; index >= 0; index -= 1) {
+    const textNode = textNodes[index];
+    if (!textNode.nodeValue || !textNode.nodeValue.trim()) continue;
+    textNode.nodeValue = textNode.nodeValue.replace(/(\S+)\s+(\S+)(\s*)$/, "$1\u00A0$2$3");
+    break;
+  }
+};
+
+document.querySelectorAll(typographySelectors.join(",")).forEach(protectPolishTypography);
 
 /* Process accordion + progress */
 const processItems = [...document.querySelectorAll("[data-process-item]")];
