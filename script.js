@@ -529,6 +529,50 @@ processItems.forEach((item, index) => {
   });
 });
 
+
+/* Map pin: keep the Gliwice marker for the initial view, then remove it as soon
+   as the user starts interacting with the embedded map. This prevents the
+   marker from pretending to point at Gliwice after the map has been panned. */
+const embeddedMap = document.querySelector('.map');
+const embeddedMapFrame = embeddedMap?.querySelector('iframe');
+
+if (embeddedMap && embeddedMapFrame) {
+  let pointerOverMap = false;
+  let mapInteractionWatcher = 0;
+
+  const hideMapPin = () => {
+    embeddedMap.classList.add('is-interacted');
+    if (mapInteractionWatcher) {
+      window.clearInterval(mapInteractionWatcher);
+      mapInteractionWatcher = 0;
+    }
+  };
+
+  embeddedMap.addEventListener('mouseenter', () => {
+    pointerOverMap = true;
+    if (!mapInteractionWatcher) {
+      mapInteractionWatcher = window.setInterval(() => {
+        if (document.activeElement === embeddedMapFrame) hideMapPin();
+      }, 120);
+    }
+  });
+
+  embeddedMap.addEventListener('mouseleave', () => {
+    pointerOverMap = false;
+    if (mapInteractionWatcher) {
+      window.clearInterval(mapInteractionWatcher);
+      mapInteractionWatcher = 0;
+    }
+  });
+
+  window.addEventListener('blur', () => {
+    if (pointerOverMap) hideMapPin();
+  });
+
+  /* On touch devices the iframe becomes the interaction target after a tap. */
+  embeddedMap.addEventListener('touchstart', hideMapPin, { passive: true });
+}
+
 /* Success message */
 const params = new URLSearchParams(location.search);
 if (params.get("wyslano") === "1") document.querySelector("[data-success]")?.classList.add("is-visible");

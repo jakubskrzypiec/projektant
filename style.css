@@ -5936,7 +5936,8 @@ svg {
   text-wrap: pretty;
 }
 
-/* Mapa: bez starego górnego pasa i bez panelu Google (iframe został przełączony na czysty OSM). */
+/* Mapa: Google Maps wycentrowane współrzędnymi, bez natywnego panelu miejsca.
+   Własna pinezka jest widoczna tylko do pierwszej interakcji z mapą. */
 .map {
   border: 1px solid rgba(40, 61, 104, .10) !important;
   border-radius: 32px !important;
@@ -5945,10 +5946,22 @@ svg {
 
 .map iframe {
   display: block;
+  width: 100%;
+  height: 100%;
   border: 0 !important;
   border-radius: inherit;
-  transform: scale(1.018);
-  transform-origin: center;
+  transform: none !important;
+}
+
+.map__pin {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .22s ease, visibility .22s ease;
+}
+
+.map.is-interacted .map__pin {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* Wstawka lokalizacji: stabilny jeden rząd na desktopie, łezka + trasa w tym samym panelu. */
