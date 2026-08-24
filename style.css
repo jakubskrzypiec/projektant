@@ -5983,3 +5983,29 @@ svg {
     white-space: nowrap;
   }
 }
+
+/* QUICK FIX 2026-08-24 — project hover must never stay on the previously clicked card. */
+@media (hover: hover) and (pointer: fine) {
+  .project-card:focus-within:not(:hover) > button::before,
+  .project-card:focus-within:not(:hover) > button::after,
+  .project-card:focus-within:not(:hover) .project-card__label-top,
+  .project-card:focus-within:not(:hover) .project-card__meta {
+    opacity: 0 !important;
+  }
+
+  .project-card:focus-within:not(:hover) > button::before {
+    transform: scale(.992) !important;
+  }
+
+  .project-card:focus-within:not(:hover) .project-card__label-top {
+    transform: translate(-50%, -2px) !important;
+  }
+
+  .project-card:focus-within:not(:hover) .project-card__meta {
+    transform: translateY(4px) !important;
+  }
+
+  .project-card:focus-within:not(:hover) > button > img {
+    transform: translateZ(0) scale(1.006) !important;
+  }
+}
