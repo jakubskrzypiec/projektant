@@ -6283,3 +6283,188 @@ svg {
     font-size: 16px !important;
   }
 }
+
+/* =========================================================
+   KOREKTA KLIENTA — 25.08.2026 / R2
+   Logo w headerze, kolor hero, ramka galerii od klienta,
+   nowe teksty z pliku „Strona TOP - teksty.docx”.
+   ========================================================= */
+
+/* Logo klienta w lewym górnym rogu. Nawigacja pozostaje niezależnie
+   wycentrowana w viewportcie. */
+.header,
+.header.is-scrolled,
+body:not(.home) .header {
+  grid-template-columns: 154px 1fr auto !important;
+}
+
+.header-logo {
+  grid-column: 1;
+  justify-self: start;
+  align-self: center;
+  width: 142px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 9px;
+  border-radius: 8px 20px 8px 20px;
+  background: rgba(245, 242, 237, .90);
+  box-shadow: 0 8px 26px rgba(10, 18, 31, .10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: width .28s ease, background .28s ease, box-shadow .28s ease, transform .28s ease;
+}
+
+.header-logo:hover,
+.header-logo:focus-visible {
+  transform: scale(1.035);
+}
+
+.header-logo img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.header.is-scrolled .header-logo,
+body:not(.home) .header-logo {
+  width: 136px;
+  height: 48px;
+  padding: 3px 6px;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* HERO — białe są tylko zwykłe słowa, kolor firmowy zostaje wyłącznie
+   na rotowanym ostatnim słowie. */
+.hero h1 .hero-line {
+  color: #fff !important;
+  -webkit-text-stroke: .36px #fff !important;
+  text-shadow: 0 12px 38px rgba(0, 0, 0, .38) !important;
+}
+
+.hero h1 .hero__gold,
+.hero h1 .hero-line .hero__gold {
+  color: var(--gold) !important;
+  -webkit-text-stroke: .36px var(--gold) !important;
+  text-shadow: 0 7px 22px rgba(40,61,104,.36) !important;
+}
+
+/* O nas — podpis właścicieli pochodzi z nowej wersji tekstów. */
+.about__names {
+  margin: -4px 0 26px;
+  color: var(--gold);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* GALERIA — zachowujemy dotychczasowy hover/zoom i zaciemnienie,
+   ale animowana ramka jest teraz dokładnie na bazie pliku klienta. */
+.project-card > button {
+  border-radius: 30px !important;
+}
+
+.project-card > button::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  background: url("gallery-frame-overlay.png") center / 100% 100% no-repeat !important;
+  opacity: 0 !important;
+  transform: scale(.985) !important;
+  transform-origin: center !important;
+  transition: opacity .26s ease, transform .42s cubic-bezier(.2,.75,.25,1) !important;
+}
+
+.project-card button::after {
+  inset: 18px !important;
+  z-index: 2 !important;
+  border-radius: 24px !important;
+  background: rgba(0, 0, 0, .35) !important;
+}
+
+.project-card:hover > button::before,
+.project-card:focus-within > button::before {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* TOP i kropki są już częścią dostarczonej ramki, więc usuwamy
+   poprzedni generowany napis, żeby nic się nie dublowało. */
+.project-card__label-top {
+  display: none !important;
+}
+
+.project-card__meta {
+  left: 38px !important;
+  bottom: 40px !important;
+  z-index: 4 !important;
+}
+
+/* Dłuższa, nowa zawartość pakietów — czytelny odstęp przed drugim zestawem. */
+.package-card__body h4:not(:first-child) {
+  margin-top: 28px;
+}
+
+.package-card__body > p + h4 {
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .project-card > button::before {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+
+  .project-card button::after {
+    inset: 15px !important;
+    border-radius: 20px !important;
+  }
+
+  .project-card__meta {
+    left: 32px !important;
+    bottom: 34px !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .header,
+  .header.is-scrolled,
+  body:not(.home) .header {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  .header-logo,
+  .header.is-scrolled .header-logo,
+  body:not(.home) .header-logo {
+    width: 124px;
+    height: 44px;
+    padding: 3px 5px;
+    background: rgba(245, 242, 237, .92);
+    box-shadow: 0 7px 20px rgba(10, 18, 31, .09);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+  }
+
+  .header.menu-open .header-logo {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .about__names {
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+}
