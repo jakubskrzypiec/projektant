@@ -7036,3 +7036,216 @@ body:not(.home) .header-logo {
     margin-top: 42px !important;
   }
 }
+
+/* =========================================================
+   KOREKTA R6 — stopka + animacje bez odczuwalnego opóźnienia
+   Tylko te elementy. Pozostałe sekcje bez zmian.
+   ========================================================= */
+
+/* Reveal startuje od razu po wejściu sekcji w viewport i trwa krócej. */
+.reveal {
+  transition-delay: 0s !important;
+  transition-duration: .48s !important;
+}
+
+/* Interakcje mają reagować natychmiast — bez "dojeżdżania" po wejściu kursorem. */
+.spotlight::before,
+.package-card.spotlight::before,
+.process-item.spotlight::before,
+.faq__list details.spotlight::before {
+  transition-delay: 0s !important;
+  transition-duration: .08s !important;
+}
+
+.package-card,
+.package-card::after,
+.project-card,
+.project-card::before,
+.project-card::after,
+.slider-arrow,
+.drop-button,
+.social,
+.line-link,
+.faq__list details,
+.process-item {
+  transition-delay: 0s !important;
+}
+
+/* STOPKA R6 — czysta, architektoniczna, bez karty i bez napisu w tle. */
+.footer {
+  padding: 72px 0 24px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,0) 38%),
+    var(--navy) !important;
+}
+
+.footer::before {
+  display: none !important;
+}
+
+.footer__grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr) !important;
+  gap: clamp(70px, 8vw, 132px) !important;
+  align-items: start !important;
+}
+
+.footer__brand {
+  position: relative;
+  min-width: 0;
+  padding-right: clamp(20px, 3vw, 48px);
+}
+
+.footer__brand img {
+  width: min(255px, 100%) !important;
+  margin: 0 !important;
+}
+
+.footer__brand .footer__cta {
+  margin-top: 38px !important;
+  max-width: 680px;
+}
+
+.footer__cta > p.footer__cta-lead,
+.footer__cta > p:first-child {
+  max-width: 620px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-family: var(--display) !important;
+  font-size: clamp(29px, 2.25vw, 39px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: .025em !important;
+  text-wrap: balance;
+}
+
+.footer__cta > p + p {
+  max-width: 560px !important;
+  margin: 18px 0 0 !important;
+  color: rgba(255,255,255,.62) !important;
+  font-family: var(--body) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  letter-spacing: .01em !important;
+}
+
+.footer__cta .drop-button {
+  margin-top: 27px !important;
+}
+
+.footer__grid > .footer__contact {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 6px 0 4px clamp(34px, 4vw, 62px) !important;
+  border: 0 !important;
+  border-left: 1px solid rgba(255,255,255,.16) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.footer__contact > span {
+  display: block;
+  margin: 0 0 22px !important;
+  color: var(--gold) !important;
+  font-family: var(--display) !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  letter-spacing: .19em !important;
+  text-transform: uppercase;
+}
+
+.footer__person {
+  display: block !important;
+  padding: 0 0 20px !important;
+  margin: 0 0 20px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,.10) !important;
+}
+
+.footer__person:first-of-type {
+  border-top: 0 !important;
+}
+
+.footer__person em {
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(255,255,255,.53) !important;
+  font-family: var(--body) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  font-style: normal;
+}
+
+.footer__contact .footer__person a {
+  display: inline-block;
+  color: #fff !important;
+  font-family: var(--display) !important;
+  font-size: 22px !important;
+  line-height: 1.05 !important;
+  letter-spacing: .035em;
+  white-space: nowrap;
+}
+
+.footer__mail {
+  display: inline-block;
+  margin-top: 2px !important;
+  padding: 0 0 5px !important;
+  border-bottom: 1px solid rgba(202,160,48,.55) !important;
+  color: rgba(255,255,255,.92) !important;
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+}
+
+.footer__bottom {
+  margin-top: 56px !important;
+  padding-top: 19px !important;
+  border-top: 1px solid rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.48) !important;
+  font-size: 12px !important;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    padding: 52px 0 22px !important;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 42px !important;
+  }
+
+  .footer__brand {
+    padding-right: 0 !important;
+  }
+
+  .footer__brand img {
+    width: min(230px, 78vw) !important;
+  }
+
+  .footer__brand .footer__cta {
+    margin-top: 30px !important;
+  }
+
+  .footer__cta > p.footer__cta-lead,
+  .footer__cta > p:first-child {
+    font-size: clamp(27px, 8vw, 37px) !important;
+  }
+
+  .footer__grid > .footer__contact {
+    padding: 30px 0 0 !important;
+    border-left: 0 !important;
+    border-top: 1px solid rgba(255,255,255,.14) !important;
+  }
+
+  .footer__contact .footer__person a {
+    font-size: 21px !important;
+  }
+
+  .footer__bottom {
+    margin-top: 40px !important;
+  }
+}

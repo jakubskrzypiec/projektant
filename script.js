@@ -67,7 +67,7 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
       entry.target.classList.add("is-visible");
       revealObserver.unobserve(entry.target);
     });
-  }, { threshold: .08, rootMargin: "0px 0px -50px" });
+  }, { threshold: .01, rootMargin: "0px 0px 90px 0px" });
   revealItems.forEach(item => revealObserver.observe(item));
 }
 
@@ -383,7 +383,7 @@ const animateDetails = (item, willOpen) => {
       { height: `${targetHeight}px` }
     ],
     {
-      duration: willOpen ? 380 : 300,
+      duration: willOpen ? 250 : 210,
       easing: "cubic-bezier(.2,.75,.25,1)"
     }
   );
