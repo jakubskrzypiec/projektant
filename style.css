@@ -6468,3 +6468,158 @@ body:not(.home) .header-logo {
     font-size: 12px;
   }
 }
+
+
+/* =========================================================
+   OSTATNIE FIXY — 25.08.2026 / R3
+   Tylko: logo na topie, responsywna ramka realizacji, układ stopki.
+   ========================================================= */
+
+/* Logo na stronie głównej przy pełnym scrollu do góry ma być bez kafla/tła.
+   Zachowujemy dotychczasowe zachowanie całego nagłówka i subpage'y. */
+.home .header:not(.is-scrolled):not(.menu-open) .header-logo {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* REALIZACJE — usunięta czerwona rasterowa obwódka.
+   Ramka jest teraz rysowana wektorowo przez CSS, więc pozostaje ostra
+   przy zmianie szerokości ekranu i przy skalowaniu przeglądarki. */
+.project-card > button::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 18px !important;
+  z-index: 3 !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  border: 2px solid rgba(240, 236, 234, .96) !important;
+  border-radius: 24px !important;
+  background: none !important;
+  opacity: 0 !important;
+  transform: scale(.985) !important;
+  transform-origin: center !important;
+  transition: opacity .26s ease, transform .42s cubic-bezier(.2,.75,.25,1) !important;
+}
+
+.project-card button::after {
+  inset: 18px !important;
+  border-radius: 24px !important;
+}
+
+.project-card__label-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  top: 27px !important;
+  left: 50% !important;
+  z-index: 4 !important;
+  gap: 10px !important;
+  width: max-content !important;
+  padding: 0 !important;
+  color: rgba(240, 236, 234, .98) !important;
+  font-family: var(--body) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: .18em !important;
+  text-shadow: 0 1px 9px rgba(0,0,0,.34) !important;
+  opacity: 0 !important;
+  transform: translate(-50%, -2px) !important;
+  transition: opacity .25s ease, transform .32s cubic-bezier(.2,.75,.25,1) !important;
+}
+
+.project-card__label-top::before,
+.project-card__label-top::after {
+  content: "•  ●  •" !important;
+  display: inline-block !important;
+  color: currentColor !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: .12em !important;
+  opacity: .94 !important;
+}
+
+.project-card:hover > button::before,
+.project-card:focus-within > button::before,
+.project-card:hover .project-card__label-top,
+.project-card:focus-within .project-card__label-top {
+  opacity: 1 !important;
+}
+
+.project-card:hover > button::before,
+.project-card:focus-within > button::before {
+  transform: scale(1) !important;
+}
+
+.project-card:hover .project-card__label-top,
+.project-card:focus-within .project-card__label-top {
+  transform: translate(-50%, 0) !important;
+}
+
+/* Wewnętrzny opis pozostaje w tej samej relacji do nowej ramki. */
+.project-card__meta {
+  left: 38px !important;
+  bottom: 40px !important;
+}
+
+@media (max-width: 900px) {
+  .project-card > button::before {
+    inset: 15px !important;
+    border-radius: 21px !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+
+  .project-card button::after {
+    inset: 15px !important;
+    border-radius: 21px !important;
+  }
+
+  .project-card__label-top {
+    top: 24px !important;
+    opacity: 1 !important;
+    transform: translate(-50%, 0) !important;
+  }
+
+  .project-card__meta {
+    left: 32px !important;
+    bottom: 34px !important;
+  }
+}
+
+/* STOPKA — lewa kolumna: logo + obecne CTA, prawa kolumna: kontakt. */
+.footer__grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr) !important;
+  gap: clamp(72px, 8vw, 150px) !important;
+  align-items: start !important;
+}
+
+.footer__brand .footer__cta {
+  margin-top: 34px;
+}
+
+.footer__grid > .footer__contact {
+  justify-self: end;
+  width: min(420px, 100%);
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 46px !important;
+  }
+
+  .footer__brand .footer__cta {
+    margin-top: 30px;
+  }
+
+  .footer__grid > .footer__contact {
+    justify-self: stretch;
+    width: 100%;
+  }
+}
