@@ -6623,3 +6623,174 @@ body:not(.home) .header-logo {
     width: 100%;
   }
 }
+
+/* =========================================================
+   FINALNE FIXY — 25.08.2026 / R4
+   Wyłącznie: górny niebieski hover pakietów + estetyka stopki.
+   ========================================================= */
+
+/* OFERTA — przy najechaniu zachowujemy interaktywny spotlight,
+   ale ograniczamy go wyłącznie do górnej części kafla i robimy
+   go w chłodnym, firmowym niebieskim zamiast wcześniejszego złota. */
+.package-card.spotlight::before {
+  inset: 0 0 auto 0 !important;
+  width: 100% !important;
+  height: 44% !important;
+  background:
+    radial-gradient(
+      ellipse 330px 190px at var(--mx) 18%,
+      rgba(94, 128, 198, .28) 0%,
+      rgba(104, 139, 210, .19) 34%,
+      rgba(124, 155, 219, .10) 56%,
+      rgba(124, 155, 219, 0) 78%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(88, 121, 190, .10) 0%,
+      rgba(112, 145, 210, .055) 54%,
+      rgba(245, 242, 237, 0) 100%
+    ) !important;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0,0,0,.72) 76%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0,0,0,.72) 76%, transparent 100%);
+  border-radius: inherit inherit 0 0 !important;
+}
+
+/* Otwarty pakiet sam z siebie nie dostaje stałego podświetlenia —
+   efekt pojawia się tylko pod kursorem, tak jak w starej wersji. */
+.package-card:hover,
+.package-card[open] {
+  background: var(--paper) !important;
+}
+
+/* STOPKA — ten sam układ treści, tylko lepsza hierarchia i proporcje. */
+.footer {
+  padding-top: 62px !important;
+}
+
+.footer__grid {
+  grid-template-columns: minmax(0, 1.14fr) minmax(330px, .86fr) !important;
+  gap: clamp(82px, 9vw, 158px) !important;
+  align-items: start !important;
+}
+
+.footer__brand img {
+  width: min(252px, 100%) !important;
+}
+
+.footer__brand .footer__cta {
+  position: relative;
+  margin-top: 38px !important;
+  padding-top: 22px;
+  max-width: 650px;
+}
+
+.footer__brand .footer__cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 54px;
+  height: 1px;
+  background: rgba(202, 160, 48, .92);
+}
+
+.footer__cta > p {
+  max-width: 610px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: 21px !important;
+  line-height: 1.38 !important;
+  letter-spacing: .012em;
+}
+
+.footer__cta > p + p {
+  max-width: 560px !important;
+  margin-top: 14px !important;
+  color: rgba(255, 255, 255, .70) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+
+.footer__cta .drop-button {
+  margin-top: 24px !important;
+}
+
+.footer__grid > .footer__contact {
+  justify-self: stretch !important;
+  width: 100% !important;
+  margin-top: 92px;
+  padding: 2px 0 2px clamp(34px, 3vw, 52px);
+  border-left: 1px solid rgba(255,255,255,.16);
+}
+
+.footer__contact > span {
+  display: block;
+  margin-bottom: 16px !important;
+  font-size: 15px;
+}
+
+.footer__person {
+  gap: 4px !important;
+  padding: 11px 0 13px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.footer__person em {
+  color: rgba(255,255,255,.58) !important;
+  font-size: 12px !important;
+}
+
+.footer__contact .footer__person a {
+  font-size: 20px !important;
+  line-height: 1.2;
+}
+
+.footer__mail {
+  display: inline-block;
+  margin-top: 16px !important;
+  font-size: 16px !important;
+}
+
+.footer__bottom {
+  margin-top: 48px !important;
+  padding-top: 20px !important;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    padding-top: 50px !important;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 42px !important;
+  }
+
+  .footer__brand img {
+    width: min(230px, 82vw) !important;
+  }
+
+  .footer__brand .footer__cta {
+    margin-top: 30px !important;
+    padding-top: 18px;
+  }
+
+  .footer__cta > p {
+    font-size: 18px !important;
+  }
+
+  .footer__cta > p + p {
+    font-size: 14px !important;
+  }
+
+  .footer__grid > .footer__contact {
+    margin-top: 0;
+    padding: 26px 0 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.16);
+  }
+
+  .footer__bottom {
+    margin-top: 40px !important;
+  }
+}
