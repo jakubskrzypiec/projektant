@@ -7249,3 +7249,211 @@ body:not(.home) .header-logo {
     margin-top: 40px !important;
   }
 }
+
+/* =========================================================
+   KOREKTA R7 — stopka inspirowana układem referencyjnym
+   Desktop: po lewej logo + CTA, po prawej kontakt.
+   Mobile: układ pionowy, socialki zachowane.
+   Tylko stopka — reszta strony bez zmian.
+   ========================================================= */
+
+.footer {
+  padding: 64px 0 22px !important;
+  background: var(--navy) !important;
+  color: rgba(255,255,255,.78) !important;
+}
+
+.footer::before {
+  display: none !important;
+}
+
+.footer__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr) !important;
+  gap: clamp(70px, 9vw, 150px) !important;
+  align-items: start !important;
+}
+
+/* LEWA STRONA — logo + pozostała treść */
+.footer__brand {
+  min-width: 0;
+  padding: 0 !important;
+}
+
+.footer__brand img {
+  display: block;
+  width: min(285px, 100%) !important;
+  margin: 0 !important;
+}
+
+.footer__brand .footer__cta {
+  max-width: 660px;
+  margin-top: 38px !important;
+  padding: 0 !important;
+}
+
+.footer__cta > p.footer__cta-lead,
+.footer__cta > p:first-child {
+  max-width: 620px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-family: var(--display) !important;
+  font-size: clamp(24px, 1.85vw, 32px) !important;
+  line-height: 1.14 !important;
+  letter-spacing: .025em !important;
+  text-wrap: balance;
+}
+
+.footer__cta > p + p {
+  max-width: 585px !important;
+  margin: 16px 0 0 !important;
+  color: rgba(255,255,255,.66) !important;
+  font-family: var(--body) !important;
+  font-size: 14px !important;
+  line-height: 1.58 !important;
+  letter-spacing: .01em !important;
+}
+
+.footer__cta .drop-button {
+  margin-top: 25px !important;
+}
+
+/* PRAWA STRONA — sam kontakt, czytelnie i bez ozdobnej karty */
+.footer__grid > .footer__contact {
+  justify-self: end !important;
+  align-self: start !important;
+  width: min(100%, 390px) !important;
+  margin: 2px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: right !important;
+}
+
+.footer__contact > span {
+  display: block;
+  margin: 0 0 24px !important;
+  color: var(--gold) !important;
+  font-family: var(--display) !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  letter-spacing: .19em !important;
+  text-transform: uppercase;
+}
+
+.footer__person {
+  display: block !important;
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.footer__person:first-of-type {
+  border: 0 !important;
+}
+
+.footer__person em {
+  display: block;
+  margin: 0 0 5px !important;
+  color: rgba(255,255,255,.58) !important;
+  font-family: var(--body) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  font-style: normal !important;
+  letter-spacing: .035em !important;
+}
+
+.footer__contact .footer__person a {
+  display: inline-block;
+  color: #fff !important;
+  font-family: var(--display) !important;
+  font-size: 22px !important;
+  line-height: 1.08 !important;
+  letter-spacing: .035em !important;
+  white-space: nowrap;
+}
+
+.footer__mail {
+  display: inline-block;
+  margin-top: 4px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: #fff !important;
+  font-family: var(--body) !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+  text-decoration: none !important;
+}
+
+.footer__mail:hover,
+.footer__contact .footer__person a:hover {
+  color: var(--gold) !important;
+}
+
+/* Na desktopie socialki nadal są zbędne — są w górnym pasku. */
+.footer__socials {
+  display: none !important;
+}
+
+/* Dolna kreska i podpisy jak w referencji — prosto i czysto. */
+.footer__bottom {
+  margin-top: 54px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(255,255,255,.42) !important;
+  color: rgba(255,255,255,.62) !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    padding: 48px 0 20px !important;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .footer__brand img {
+    width: min(235px, 76vw) !important;
+  }
+
+  .footer__brand .footer__cta {
+    margin-top: 28px !important;
+  }
+
+  .footer__cta > p.footer__cta-lead,
+  .footer__cta > p:first-child {
+    font-size: clamp(24px, 7.3vw, 33px) !important;
+  }
+
+  .footer__grid > .footer__contact {
+    justify-self: start !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-top: 28px !important;
+    border-top: 1px solid rgba(255,255,255,.20) !important;
+    text-align: left !important;
+  }
+
+  .footer__contact > span {
+    margin-bottom: 21px !important;
+  }
+
+  .footer__contact .footer__person a {
+    font-size: 21px !important;
+  }
+
+  .footer__socials {
+    display: flex !important;
+    justify-content: flex-start;
+    margin-top: 22px !important;
+  }
+
+  .footer__bottom {
+    margin-top: 38px !important;
+    gap: 9px;
+  }
+}
