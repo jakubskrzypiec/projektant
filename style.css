@@ -6794,3 +6794,245 @@ body:not(.home) .header-logo {
     margin-top: 40px !important;
   }
 }
+
+/* =========================================================
+   FINALNE FIXY — 25.08.2026 / R5
+   1. Żółty glow nadal śledzi kursor.
+   2. Delikatny niebieski gradient pojawia się statycznie tylko
+      w górnej części kafla po najechaniu.
+   3. Stopka: bardziej architektoniczny, uporządkowany układ.
+   ========================================================= */
+
+/* PAKIETY — przywrócenie żółtego glow pod kursorem. */
+.package-card.spotlight::before {
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: inherit !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  background: radial-gradient(
+    circle 245px at var(--mx) var(--my),
+    rgba(202,160,48,.30) 0%,
+    rgba(202,160,48,.19) 24%,
+    rgba(202,160,48,.08) 46%,
+    transparent 72%
+  ) !important;
+}
+
+/* Niebieski akcent nie podąża za kursorem — jest stały na górze kafla. */
+.package-card,
+.package-card[open] {
+  background: var(--paper) !important;
+}
+
+.package-card:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(112,145,210,.17) 0%,
+      rgba(124,155,219,.11) 18%,
+      rgba(124,155,219,.045) 31%,
+      rgba(245,242,237,0) 44%
+    ),
+    var(--paper) !important;
+}
+
+/* STOPKA — spokojniejsza kompozycja: duże CTA po lewej,
+   kontakt jako lekki "panel" po prawej. */
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 70px 0 26px !important;
+}
+
+.footer::before {
+  content: "TO ONI";
+  position: absolute;
+  right: -22px;
+  top: -38px;
+  color: rgba(255,255,255,.025);
+  font-family: var(--display);
+  font-size: clamp(150px, 15vw, 270px);
+  line-height: 1;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.footer__grid,
+.footer__bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.footer__grid {
+  grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr) !important;
+  gap: clamp(70px, 8vw, 142px) !important;
+  align-items: stretch !important;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.footer__brand img {
+  width: min(255px, 100%) !important;
+  margin-bottom: 0 !important;
+}
+
+.footer__brand .footer__cta {
+  margin-top: 42px !important;
+  padding-top: 0 !important;
+  max-width: 690px;
+}
+
+.footer__brand .footer__cta::before {
+  display: none !important;
+}
+
+.footer__cta > p.footer__cta-lead,
+.footer__cta > p:first-child {
+  max-width: 660px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-family: var(--display) !important;
+  font-size: clamp(28px, 2.35vw, 40px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: .025em !important;
+  text-wrap: balance;
+}
+
+.footer__cta > p + p {
+  max-width: 590px !important;
+  margin: 19px 0 0 !important;
+  color: rgba(255,255,255,.64) !important;
+  font-family: var(--body) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  letter-spacing: .01em !important;
+}
+
+.footer__cta .drop-button {
+  margin-top: 28px !important;
+}
+
+.footer__grid > .footer__contact {
+  align-self: end;
+  justify-self: stretch !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 30px 32px 29px !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  border-radius: 30px 30px 7px 30px;
+  background: rgba(255,255,255,.035);
+  box-shadow: 0 20px 55px rgba(10,20,38,.10);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.footer__contact > span {
+  display: block;
+  margin: 0 0 19px !important;
+  color: var(--gold) !important;
+  font-size: 13px !important;
+  letter-spacing: .18em !important;
+}
+
+.footer__person {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 8px 20px !important;
+  padding: 15px 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,.10) !important;
+}
+
+.footer__person:first-of-type {
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.footer__person em {
+  color: rgba(255,255,255,.58) !important;
+  font-size: 12px !important;
+  line-height: 1.35;
+}
+
+.footer__contact .footer__person a {
+  color: #fff !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+}
+
+.footer__mail {
+  display: inline-block;
+  margin-top: 20px !important;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(202,160,48,.55);
+  color: #fff !important;
+  font-size: 15px !important;
+  line-height: 1.35;
+}
+
+.footer__bottom {
+  margin-top: 58px !important;
+  padding-top: 20px !important;
+  border-top-color: rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.52);
+}
+
+@media (max-width: 900px) {
+  .package-card:hover {
+    background: var(--paper) !important;
+  }
+
+  .footer {
+    padding-top: 52px !important;
+  }
+
+  .footer::before {
+    top: 10px;
+    right: -12px;
+    font-size: 34vw;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 42px !important;
+  }
+
+  .footer__brand img {
+    width: min(230px, 78vw) !important;
+  }
+
+  .footer__brand .footer__cta {
+    margin-top: 32px !important;
+  }
+
+  .footer__cta > p.footer__cta-lead,
+  .footer__cta > p:first-child {
+    font-size: clamp(27px, 8vw, 38px) !important;
+  }
+
+  .footer__grid > .footer__contact {
+    padding: 26px 24px !important;
+    border-radius: 24px 24px 6px 24px;
+  }
+
+  .footer__person {
+    grid-template-columns: 1fr !important;
+    align-items: start;
+    gap: 7px !important;
+  }
+
+  .footer__contact .footer__person a {
+    font-size: 19px !important;
+  }
+
+  .footer__bottom {
+    margin-top: 42px !important;
+  }
+}
