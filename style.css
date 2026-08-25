@@ -7501,3 +7501,22 @@ body:not(.home) .header-logo {
     line-height: 1.55 !important;
   }
 }
+
+/* R9 — selection: dekoracyjne/nagłówkowe elementy bez zaznaczania,
+   zaznaczalne pozostają tylko dłuższe treści użytkowe. */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.rich-copy p,
+.package-card__body p,
+.package-card__body li,
+.process-answer p,
+.process-answer b,
+.faq__list details > div p,
+.contact-form input,
+.contact-form textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
