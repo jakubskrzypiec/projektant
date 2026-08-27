@@ -7970,3 +7970,30 @@ body.subpage .contact__form-head h3 {
     font-size: 27px !important;
   }
 }
+
+
+/* =========================================================
+   FIX 27.08.2026 / R5 — kontakt: wyśrodkowanie „Zacznijmy od konkretów”
+   ========================================================= */
+.home .contact__form-head,
+body.subpage .contact__form-head {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: center !important;
+}
+
+.home .contact__form-head h3,
+body.subpage .contact__form-head h3 {
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.home .contact__form-head p,
+body.subpage .contact__form-head p {
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 14px auto 0 !important;
+  text-align: center !important;
+}
