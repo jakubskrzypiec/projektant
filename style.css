@@ -7933,3 +7933,40 @@ body.subpage .contact__page--left h2,
     min-height: 0 !important;
   }
 }
+
+/* =========================================================
+   FIX 27.08.2026 / R4 — kontakt: oba nagłówki identyczny rozmiar
+   ========================================================= */
+.home .contact__page--left h2,
+.home .contact__form-head h3,
+body.subpage .contact__page--left h2,
+body.subpage .contact__form-head h3 {
+  font-size: clamp(50px, 4vw, 56px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: .028em !important;
+}
+
+.home .contact__form-head h3,
+body.subpage .contact__form-head h3 {
+  white-space: nowrap !important;
+}
+
+@media (max-width: 820px) {
+  .home .contact__page--left h2,
+  .home .contact__form-head h3,
+  body.subpage .contact__page--left h2,
+  body.subpage .contact__form-head h3 {
+    font-size: clamp(30px, 8.5vw, 40px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: .02em !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .home .contact__page--left h2,
+  .home .contact__form-head h3,
+  body.subpage .contact__page--left h2,
+  body.subpage .contact__form-head h3 {
+    font-size: 27px !important;
+  }
+}
