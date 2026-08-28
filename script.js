@@ -111,11 +111,14 @@ const modalImage = modal?.querySelector("[data-modal-image]");
 const modalTitle = modal?.querySelector("[data-modal-title]");
 const modalCategory = modal?.querySelector("[data-modal-category]");
 const modalThumbs = modal?.querySelector("[data-modal-thumbs]");
+const modalDescription = modal?.querySelector("[data-modal-description]");
 let lastFocus = null;
+let modalGalleryAlts = new Map();
 
 const selectModalImage = source => {
   if (!modalImage || !modalThumbs) return;
   modalImage.src = source;
+  modalImage.alt = modalGalleryAlts.get(source) || modalTitle?.textContent || "Zdjęcie realizacji";
   modalThumbs.querySelectorAll("button").forEach(button => {
     const active = button.dataset.source === source;
     button.classList.toggle("is-active", active);
@@ -130,36 +133,40 @@ const openModal = card => {
     .split(",")
     .map(source => source.trim())
     .filter(Boolean);
+  const galleryAltLabels = (card.dataset.galleryAlts || "")
+    .split("|")
+    .map(label => label.trim());
+  const projectTitle = card.dataset.title || "";
+  modalGalleryAlts = new Map(gallery.map((source, index) => [
+    source,
+    galleryAltLabels[index] ? `${projectTitle} - ${galleryAltLabels[index]}` : `${projectTitle} - zdjęcie ${index + 1}`
+  ]));
+
   const firstImage = card.dataset.image || gallery[0] || "";
-  modalImage.alt = card.dataset.title || "";
   modalImage.style.objectPosition = card.dataset.focus || "50% 50%";
-  modalTitle.textContent = card.dataset.title || "";
-  modalCategory.textContent = card.dataset.category || "";
+  modalTitle.textContent = projectTitle;
+  modalCategory.textContent = card.dataset.category || "PROJEKT WNĘTRZA";
+  if (modalDescription) modalDescription.textContent = card.dataset.description || "";
   modalThumbs.replaceChildren();
-  const gallerySlots = Math.max(4, gallery.length);
-  for (let index = 0; index < gallerySlots; index += 1) {
-    const source = gallery[index];
-    const tile = document.createElement(source ? "button" : "div");
-    const label = document.createElement("span");
-    tile.className = source ? "modal__thumb" : "modal__thumb modal__thumb--empty";
-    label.textContent = "Czekamy na pełną galerię";
 
-    if (source) {
-      const image = document.createElement("img");
-      tile.type = "button";
-      tile.dataset.source = source;
-      tile.setAttribute("aria-label", `Pokaż zdjęcie ${index + 1}`);
-      tile.addEventListener("click", () => selectModalImage(source));
-      image.src = source;
-      image.alt = "";
-      tile.append(image);
-    } else {
-      tile.setAttribute("aria-hidden", "true");
-    }
+  gallery.forEach((source, index) => {
+    const tile = document.createElement("button");
+    const image = document.createElement("img");
+    tile.className = "modal__thumb";
+    tile.type = "button";
+    tile.dataset.source = source;
+    tile.setAttribute("aria-label", `Pokaż zdjęcie ${index + 1} z realizacji ${projectTitle}`);
+    tile.setAttribute("aria-pressed", "false");
+    tile.addEventListener("click", () => selectModalImage(source));
 
-    tile.append(label);
+    image.src = source;
+    image.alt = modalGalleryAlts.get(source) || `${projectTitle} - zdjęcie ${index + 1}`;
+    image.loading = "lazy";
+    image.decoding = "async";
+    tile.append(image);
     modalThumbs.append(tile);
-  }
+  });
+
   selectModalImage(firstImage);
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
@@ -171,8 +178,12 @@ const closeModal = () => {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
   body.style.overflow = "";
-  if (modalImage) modalImage.src = "";
+  if (modalImage) {
+    modalImage.src = "";
+    modalImage.alt = "";
+  }
   modalThumbs?.replaceChildren();
+  modalGalleryAlts = new Map();
   lastFocus?.focus?.();
 };
 document.addEventListener("click", event => {
