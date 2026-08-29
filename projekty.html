@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="pl">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<meta content="#F2EEE7" name="theme-color"/>
-<meta content="Wybrane projekty i wizualizacje To Oni Projektują." name="description"/>
-<title>
-   Projekty | To Oni Projektują
-  </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#F2EEE7"/>
+<meta name="description" content="Projekty wnętrz pracowni To Oni Projektują z Gliwic — apartamenty, mieszkania, lofty i domy zaprojektowane z myślą o funkcji, materiale i codzienności użytkowników."/>
+<title>Projekty wnętrz | To Oni Projektują</title>
 <link href="logo-symbol.png" rel="icon" type="image/png"/>
+<link as="font" crossorigin href="isocpeur.ttf" rel="preload" type="font/ttf"/>
+<link as="font" crossorigin href="gill-sans-mt.ttf" rel="preload" type="font/ttf"/>
 <link href="style.css" rel="stylesheet"/>
+<link href="projekty.css" rel="stylesheet"/>
 </head>
-<body class="subpage" id="top">
+<body class="subpage projects-page" id="top">
 <svg aria-hidden="true" class="svg-defs">
 <symbol id="icon-facebook" viewbox="0 0 24 24">
 <path d="M13.7 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5H17V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.5V13h2.8v8h3.4Z">
@@ -32,34 +32,32 @@
 </symbol>
 </svg>
 <header class="header" data-header="">
-<a aria-label="To Oni Projektują - strona główna" class="header-logo" href="index.html">
-<img alt="To Oni Projektują" src="top-logo.png"/>
-</a>
+<a aria-label="To Oni Projektują - strona główna" class="header-logo" href="index.html"><img alt="To Oni Projektują" src="top-logo.png"/></a>
 <nav aria-label="Menu główne" class="nav">
-<a class="is-active" href="projekty.html">
+<a aria-current="page" class="is-active" href="projekty.html">
      Projekty
     </a>
-<a class="" href="oferta.html">
+<a href="index.html#pakiety">
      Oferta
     </a>
-<a class="" href="kontakt.html">
+<a href="index.html#kontakt">
      Kontakt
     </a>
 </nav>
 <div class="header-actions">
-<a aria-label="Facebook" class="social social--header" href="https://www.facebook.com/61583774015406/" rel="noopener" target="_blank">
+<a aria-label="Facebook To Oni Projektują" class="social social--header" href="https://www.facebook.com/61583774015406/" rel="noopener" target="_blank">
 <svg>
 <use href="#icon-facebook">
 </use>
 </svg>
 </a>
-<a aria-label="Instagram" class="social social--header" href="https://www.instagram.com/to_oni_projektuja/" rel="noopener" target="_blank">
+<a aria-label="Instagram To Oni Projektują" class="social social--header" href="https://www.instagram.com/to_oni_projektuja/" rel="noopener" target="_blank">
 <svg>
 <use href="#icon-instagram">
 </use>
 </svg>
 </a>
-<a class="drop-button drop-button--small" href="kontakt.html#formularz">
+<a class="drop-button drop-button--small" href="index.html#kontakt">
      Skontaktuj się z nami
      <svg>
 <use href="#icon-arrow">
@@ -76,16 +74,16 @@
 </span>
 </button>
 <div aria-hidden="true" class="mobile-menu">
-<a class="is-active" href="projekty.html">
+<a aria-current="page" class="is-active" href="projekty.html">
      Projekty
     </a>
-<a class="" href="oferta.html">
+<a href="index.html#pakiety">
      Oferta
     </a>
-<a class="" href="kontakt.html">
+<a href="index.html#kontakt">
      Kontakt
     </a>
-<a class="drop-button" href="kontakt.html#formularz">
+<a class="drop-button" href="index.html#kontakt">
      Skontaktuj się z nami
      <svg>
 <use href="#icon-arrow">
@@ -93,13 +91,13 @@
 </svg>
 </a>
 <div class="mobile-socials">
-<a class="social" href="https://www.facebook.com/61583774015406/" rel="noopener" target="_blank">
+<a aria-label="Facebook" class="social" href="https://www.facebook.com/61583774015406/" rel="noopener" target="_blank">
 <svg>
 <use href="#icon-facebook">
 </use>
 </svg>
 </a>
-<a class="social" href="https://www.instagram.com/to_oni_projektuja/" rel="noopener" target="_blank">
+<a aria-label="Instagram" class="social" href="https://www.instagram.com/to_oni_projektuja/" rel="noopener" target="_blank">
 <svg>
 <use href="#icon-instagram">
 </use>
@@ -109,240 +107,43 @@
 </div>
 </header>
 <main>
-<section class="page-hero page-hero--projects">
-<div class="shell">
-<p class="section-label">
-      Portfolio
-     </p>
-<h1>
-      Projekty
-     </h1>
-<p>
-      Wybrane wnętrza, detale i wizualizacje.
-     </p>
-</div>
-</section>
-<section class="projects projects--page section">
-<div class="shell">
-<div class="projects-page-grid">
-<article class="project-card" data-category="Projekt koncepcyjny" data-gallery="lazienka1.jpg,lazienka2.jpg" data-image="lazienka1.jpg" data-project-card="" data-title="Łazienka / detal">
-<button type="button">
-<img alt="Łazienka / detal" loading="lazy" src="lazienka1.jpg"/>
-<span class="project-card__top">
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-<b>
-          TO ONI PROJEKTUJĄ
-         </b>
-</span>
-<span class="project-card__meta">
-<strong>
-          9 m²
-         </strong>
-</span>
-</button>
-<p>
-        Projekt koncepcyjny
-       </p>
-<h3>
-        Łazienka / detal
-       </h3>
-</article>
-<article class="project-card" data-category="Projekt kompleksowy" data-gallery="kuchnia2.jpg,kuchnia1.jpg" data-image="kuchnia2.jpg" data-project-card="" data-title="Strefa dzienna">
-<button type="button">
-<img alt="Strefa dzienna" loading="lazy" src="kuchnia2.jpg"/>
-<span class="project-card__top">
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-<b>
-          TO ONI PROJEKTUJĄ
-         </b>
-</span>
-<span class="project-card__meta">
-<strong>
-          42 m²
-         </strong>
-</span>
-</button>
-<p>
-        Projekt kompleksowy
-       </p>
-<h3>
-        Strefa dzienna
-       </h3>
-</article>
-<article class="project-card" data-category="Wizualizacja klienta" data-gallery="client-guest-room.jpg" data-image="client-guest-room.jpg" data-project-card="" data-title="Pokój gościnny">
-<button type="button">
-<img alt="Pokój gościnny" loading="lazy" src="client-guest-room.jpg"/>
-<span class="project-card__top">
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-<b>
-          TO ONI PROJEKTUJĄ
-         </b>
-</span>
-<span class="project-card__meta">
-<strong>
-          16 m²
-         </strong>
-</span>
-</button>
-<p>
-        Projekt wnętrza
-       </p>
-<h3>
-        Pokój gościnny
-       </h3>
-</article>
-<article class="project-card" data-category="Projekt wykonawczy" data-gallery="lazienka2.jpg,lazienka1.jpg" data-image="lazienka2.jpg" data-project-card="" data-title="Spokojna łazienka">
-<button type="button">
-<img alt="Spokojna łazienka" loading="lazy" src="lazienka2.jpg"/>
-<span class="project-card__top">
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-<b>
-          TO ONI PROJEKTUJĄ
-         </b>
-</span>
-<span class="project-card__meta">
-<strong>
-          12 m²
-         </strong>
-</span>
-</button>
-<p>
-        Projekt wykonawczy
-       </p>
-<h3>
-        Spokojna łazienka
-       </h3>
-</article>
-<article class="project-card" data-category="Projekt wnętrza" data-gallery="kuchnia1.jpg,kuchnia2.jpg" data-image="kuchnia1.jpg" data-project-card="" data-title="Kuchnia / codzienność">
-<button type="button">
-<img alt="Kuchnia / codzienność" loading="lazy" src="kuchnia1.jpg"/>
-<span class="project-card__top">
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-<b>
-          TO ONI PROJEKTUJĄ
-         </b>
-</span>
-<span class="project-card__meta">
-<strong>
-          14 m²
-         </strong>
-</span>
-</button>
-<p>
-        Projekt wnętrza
-       </p>
-<h3>
-        Kuchnia / codzienność
-       </h3>
-</article>
-<article class="project-card" data-category="Wizualizacja klienta" data-gallery="client-hall.jpg" data-image="client-hall.jpg" data-project-card="" data-title="Strefa wejściowa">
-<button type="button">
-<img alt="Strefa wejściowa" loading="lazy" src="client-hall.jpg"/>
-<span class="project-card__top">
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-<b>
-          TO ONI PROJEKTUJĄ
-         </b>
-</span>
-<span class="project-card__meta">
-<strong>
-          18 m²
-         </strong>
-</span>
-</button>
-<p>
-        Projekt wnętrza
-       </p>
-<h3>
-        Strefa wejściowa
-       </h3>
-</article>
-</div>
-</div>
-</section>
-<section class="page-cta section">
-<div class="shell">
-<h2>
-      Masz wnętrze, które chcesz zmienić?
-     </h2>
-<a class="drop-button" href="kontakt.html#formularz">
-      Skontaktuj się z nami
-      <svg>
-<use href="#icon-arrow">
-</use>
-</svg>
-</a>
-</div>
-</section>
+  <section class="page-hero page-hero--projects">
+    <div class="shell reveal">
+      <p class="section-label">Pracownia</p>
+      <h1>Projekty</h1>
+      <p>Każdy projekt zaczynamy od człowieka i miejsca, w którym ma żyć. Zebraliśmy tu realizacje pokazujące różne skale, materiały i charaktery wnętrz — zawsze podporządkowane codzienności ich użytkowników. Zobacz, jak przekładamy potrzeby na przestrzeń.</p>
+    </div>
+  </section>
+
+  <section class="section projects-page-section" aria-labelledby="projects-grid-title">
+    <div class="shell">
+      <div class="projects__head reveal">
+        <div>
+          <h2 id="projects-grid-title">Realizacje</h2>
+        </div>
+      </div>
+      <div class="projects-page-grid" data-projects-grid></div>
+    </div>
+  </section>
+
+  <section class="projects-page-cta">
+    <div class="shell projects-page-cta__inner reveal">
+      <div>
+        <p class="section-label">Porozmawiajmy</p>
+        <h2>Masz przestrzeń, którą chcesz dobrze zaprojektować?</h2>
+        <p>Opowiedz nam o swoim wnętrzu. Zaczniemy od rozmowy o potrzebach, funkcji i kierunku, który ma być naprawdę Twój.</p>
+      </div>
+      <a class="drop-button" href="index.html#kontakt">
+        Skontaktuj się z nami
+        <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
+      </a>
+    </div>
+  </section>
 </main>
-<section class="business-cta section">
-<div class="shell business-cta__inner">
-<div>
-<p class="section-label">
-      Współpraca
-     </p>
-<h2>
-      Masz firmę i widzisz przestrzeń do wspólnego działania?
-     </h2>
-<p>
-      Współpracujemy z wykonawcami, salonami, markami wyposażenia i specjalistami z branży wnętrzarskiej.
-     </p>
-</div>
-<a class="drop-button drop-button--light" href="mailto:tooniprojektuja@gmail.com">
-     Napisz do nas
-     <svg>
-<use href="#icon-arrow">
-</use>
-</svg>
-</a>
-</div>
-</section>
-<section class="brand-band">
-<a class="back-top" href="#top">
-    Wróć na górę
-    <svg>
-<use href="#icon-arrow">
-</use>
-</svg>
-</a>
-<div class="brand-band__word">
-    TO ONI PROJEKTUJĄ
-   </div>
-</section>
 <footer class="footer">
 <div class="shell footer__grid">
 <div class="footer__brand">
-<img alt="To Oni Projektują" src="logo-monochrome.png"/>
+<img alt="To Oni Projektują" src="logo-horizontal.png"/>
 <div class="footer__cta">
 <p class="footer__cta-lead">
       Chcesz omówić projekt lub umówić się na spotkanie?
@@ -350,8 +151,8 @@
 <p>
       Prowadzisz firmę, markę lub reprezentujesz wykonawców i chcesz współpracować przy realizacjach?
      </p>
-<a class="drop-button drop-button--light" href="kontakt.html#formularz">
-      Napisz do nas
+<a class="drop-button drop-button--light" href="mailto:tooniprojektuja@gmail.com">
+      Skontaktuj się z nami
       <svg>
 <use href="#icon-arrow">
 </use>
@@ -414,9 +215,9 @@
 <div class="modal__inner">
 <div class="modal__gallery">
 <div class="modal__main">
-<img alt="" class="modal__image" data-modal-image=""/>
+<img alt="" class="modal__image" data-modal-image="" loading="lazy"/>
 </div>
-<div class="modal__thumbs" data-modal-thumbs="">
+<div aria-label="Pozostałe zdjęcia realizacji" class="modal__thumbs" data-modal-thumbs="">
 </div>
 </div>
 <div class="modal__copy">
@@ -424,13 +225,12 @@
 </span>
 <h2 data-modal-title="" id="modal-title">
 </h2>
-<p>
-      Wybrane kadry realizacji To Oni Projektują.
-     </p>
+<p class="modal__description" data-modal-description="">
+</p>
 </div>
 </div>
 </div>
-<script src="script.js">
-</script>
+<script src="projekty.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
