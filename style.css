@@ -8260,3 +8260,56 @@ body.subpage .contact__form-head p {
     font-size: 28px !important;
   }
 }
+
+/* ===== ZAZNACZANIE TEKSTU — TO ONI PROJEKTUJĄ ===== */
+
+/* Tekst użytkowy: zaznaczenie w kolorze marki */
+::selection {
+  background: #CAA030;
+  color: #17284F;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #CAA030;
+  color: #17284F;
+  text-shadow: none;
+}
+
+/* Elementy nagłówkowe, dekoracyjne i interaktywne nie tworzą „ścian zaznaczenia” */
+h1,
+h2,
+h3,
+h4,
+.section-label,
+.section-quote,
+.hero__brand,
+.process__ghost,
+.contact__word,
+.project-card > p,
+.project-card__top,
+.project-card__meta,
+.projects-page-card__eyebrow,
+.projects-page-card__title,
+.projects-page-card__number,
+.projects-page-card__hint,
+.nav a,
+.mobile-menu a,
+.drop-button,
+.line-link,
+.social,
+.back-top,
+.brand-band__word,
+button,
+summary {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Obrazy i ikony również nie łapią przypadkowego zaznaczenia */
+img,
+svg {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
