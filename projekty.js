@@ -281,7 +281,8 @@ const projects = [
 
 const projectsGrid = document.querySelector("[data-projects-grid]");
 
-const projectImagePath = (project, fileName) => `./${fileName}`;
+const projectImagePath = (project, fileName) =>
+  `img/realizacje/${project.folder}/${fileName}`;
 
 const createProjectCard = (project, index) => {
   const article = document.createElement("article");
@@ -297,20 +298,12 @@ const createProjectCard = (project, index) => {
   const button = document.createElement("button");
   button.className = "projects-page-card__button";
   button.type = "button";
-  button.setAttribute("aria-label", `Otwórz projekt ${project.title}`);
+  button.setAttribute("aria-label", `Otwórz galerię projektu ${project.title}`);
 
-  const media = document.createElement("span");
-  media.className = "projects-page-card__media";
+  const head = document.createElement("span");
+  head.className = "projects-page-card__head";
 
-  const image = document.createElement("img");
-  image.src = projectImagePath(project, project.cover);
-  image.alt = `${project.title} - ${project.alts[0] || "widok wnętrza"}`;
-  image.loading = "lazy";
-  image.decoding = "async";
-  media.append(image);
-
-  const copy = document.createElement("span");
-  copy.className = "projects-page-card__copy";
+  const heading = document.createElement("span");
 
   const eyebrow = document.createElement("span");
   eyebrow.className = "projects-page-card__eyebrow";
@@ -320,8 +313,30 @@ const createProjectCard = (project, index) => {
   title.className = "projects-page-card__title";
   title.textContent = project.title;
 
-  copy.append(eyebrow, title);
-  button.append(media, copy);
+  const number = document.createElement("span");
+  number.className = "projects-page-card__number";
+  number.setAttribute("aria-hidden", "true");
+  number.textContent = String(index + 1).padStart(2, "0");
+
+  heading.append(eyebrow, title);
+  head.append(heading, number);
+
+  const media = document.createElement("span");
+  media.className = "projects-page-card__media";
+
+  const image = document.createElement("img");
+  image.src = projectImagePath(project, project.cover);
+  image.alt = `${project.title} - ${project.alts[0] || "widok wnętrza"}`;
+  image.loading = index === 0 ? "eager" : "lazy";
+  image.decoding = "async";
+
+  const hint = document.createElement("span");
+  hint.className = "projects-page-card__hint";
+  hint.setAttribute("aria-hidden", "true");
+  hint.textContent = "Zobacz galerię →";
+
+  media.append(image, hint);
+  button.append(head, media);
   article.append(button);
   return article;
 };
