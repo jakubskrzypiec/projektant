@@ -281,8 +281,7 @@ const projects = [
 
 const projectsGrid = document.querySelector("[data-projects-grid]");
 
-const projectImagePath = (project, fileName) =>
-  `img/realizacje/${project.folder}/${fileName}`;
+const projectImagePath = (_project, fileName) => fileName;
 
 const createProjectCard = (project, index) => {
   const article = document.createElement("article");
