@@ -10,7 +10,10 @@
    Kontakt | To Oni Projektują
   </title>
 <link href="logo-symbol.png" rel="icon" type="image/png"/>
+<link as="font" crossorigin href="isocpeur.ttf" rel="preload" type="font/ttf"/>
+<link as="font" crossorigin href="gill-sans-mt.ttf" rel="preload" type="font/ttf"/>
 <link href="style.css" rel="stylesheet"/>
+<link href="kontakt.css" rel="stylesheet"/>
 </head>
 <body class="subpage" id="top">
 <svg aria-hidden="true" class="svg-defs">
@@ -115,6 +118,26 @@
 <p>
       Opowiedz nam o miejscu, które chcesz zmienić.
      </p>
+</div>
+</section>
+<section class="contact-team-preview" aria-label="Pracownia To Oni Projektują">
+<div class="shell contact-team-preview__grid">
+<div class="contact-team-preview__copy reveal">
+<p class="section-label">Pracownia</p>
+<h2>Najpierw rozmowa.</h2>
+<p>Przy pierwszym kontakcie chcemy przede wszystkim poznać Waszą przestrzeń, sposób życia i oczekiwania. Dzięki temu od początku wiemy, w którą stronę powinien pójść projekt.</p>
+<div class="contact-team-preview__names">
+<div class="contact-team-preview__person"><strong>Oliwia Brust</strong><span>arch. wnętrz</span></div>
+<div class="contact-team-preview__person"><strong>Jakub Koprianiuk</strong><span>arch. wnętrz</span></div>
+</div>
+</div>
+<figure class="contact-team-preview__visual reveal">
+<div class="contact-team-preview__placeholder">
+<img alt="" src="logo-symbol.png"/>
+<span>Miejsce na wspólny portret Oliwii i Jakuba</span>
+</div>
+<figcaption>Proponujemy jedno naturalne, wspólne zdjęcie pracowni — bez osobnej sesji wizerunkowej na całą stronę.</figcaption>
+</figure>
 </div>
 </section>
 <section class="contact section" id="formularz">
@@ -281,17 +304,25 @@
 </div>
 </div>
 </section>
-<section class="map">
-<div class="map__label">
-<span>
-      Gliwice
-     </span>
-<strong>
-      Tu pracujemy, ale projektujemy w całej Polsce.
-     </strong>
+<section class="map-section" id="lokalizacja">
+<div class="shell map-section__head reveal">
+<div>
+<h2>Znajdziesz nas<br/>na Śląsku.</h2>
 </div>
-<iframe loading="lazy" src="https://www.google.com/maps?q=Gliwice,+Poland&amp;output=embed" title="Mapa - Gliwice">
-</iframe>
+</div>
+<div class="shell map-shell reveal">
+<div class="map">
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?ll=50.294492,18.671380&amp;z=13&amp;t=m&amp;hl=pl&amp;output=embed" title="Mapa - To Oni Projektują, Gliwice"></iframe>
+<span aria-hidden="true" class="map__pin"></span>
+<div class="map__address-card">
+<strong>Gliwice</strong>
+<a class="map__route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gliwice%2C+Polska" rel="noopener" target="_blank">
+Wyznacz trasę
+<svg><use href="#icon-arrow"></use></svg>
+</a>
+</div>
+</div>
+</div>
 </section>
 </main>
 <section class="business-cta section">

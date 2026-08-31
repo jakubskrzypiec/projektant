@@ -8313,3 +8313,26 @@ svg {
   user-select: none;
   -webkit-user-drag: none;
 }
+
+/* =========================================================
+   FEEDBACK 31.08.2026 — subtelniejsze złote podświetlenie
+   Powrót do spokojniejszego efektu z wcześniejszej wersji.
+   ========================================================= */
+.home .spotlight::before,
+.home .package-card.spotlight::before,
+.home .process-item.spotlight::before,
+.home .faq__list details.spotlight::before {
+  background: radial-gradient(circle 150px at var(--mx) var(--my),
+    rgba(202,160,48,.075) 0%,
+    rgba(202,160,48,.035) 42%,
+    rgba(202,160,48,0) 74%) !important;
+  transition-duration: .12s !important;
+}
+
+.home .faq__list details.spotlight::after {
+  background: radial-gradient(circle 160px at var(--mx) var(--my),
+    rgba(202,160,48,.085) 0%,
+    rgba(202,160,48,.038) 42%,
+    rgba(202,160,48,0) 74%) !important;
+  transition-duration: .12s !important;
+}

@@ -341,7 +341,43 @@ const createProjectCard = (project, index) => {
 };
 
 if (projectsGrid) {
+  const PAGE_SIZE = 6;
+  let visibleProjects = Math.min(PAGE_SIZE, projects.length);
   const fragment = document.createDocumentFragment();
-  projects.forEach((project, index) => fragment.append(createProjectCard(project, index)));
+
+  projects.forEach((project, index) => {
+    const card = createProjectCard(project, index);
+    if (index >= visibleProjects) card.classList.add("is-project-hidden");
+    fragment.append(card);
+  });
+
   projectsGrid.append(fragment);
+
+  if (projects.length > PAGE_SIZE) {
+    const moreWrap = document.createElement("div");
+    moreWrap.className = "projects-page-more-wrap";
+
+    const moreButton = document.createElement("button");
+    moreButton.className = "projects-page-more";
+    moreButton.type = "button";
+    moreButton.textContent = "Pokaż więcej projektów";
+    moreButton.setAttribute("aria-controls", "projects-list");
+
+    projectsGrid.id = "projects-list";
+    moreWrap.append(moreButton);
+    projectsGrid.insertAdjacentElement("afterend", moreWrap);
+
+    moreButton.addEventListener("click", () => {
+      const cards = [...projectsGrid.querySelectorAll(".projects-page-card")];
+      visibleProjects = Math.min(visibleProjects + PAGE_SIZE, cards.length);
+
+      cards.forEach((card, index) => {
+        if (index < visibleProjects) card.classList.remove("is-project-hidden");
+      });
+
+      if (visibleProjects >= cards.length) {
+        moreButton.hidden = true;
+      }
+    });
+  }
 }
