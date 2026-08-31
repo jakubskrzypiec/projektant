@@ -177,20 +177,6 @@ body.subpage .map-section__head h2 {
   isolation: isolate;
 }
 
-.contact-socials-card::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: 28px;
-  bottom: 28px;
-  width: clamp(62px, 5vw, 78px);
-  background: linear-gradient(180deg, rgba(226, 176, 49, .95), rgba(194, 149, 36, .96));
-  border-radius: 0 999px 999px 0;
-  clip-path: path("M 0 0 C 48 0 76 26 76 58 C 76 92 46 122 0 148 L 0 0 Z");
-  z-index: -1;
-  opacity: .94;
-  filter: drop-shadow(0 14px 28px rgba(194, 149, 36, .2));
-}
 
 .contact-socials-card::after {
   content: "";
@@ -205,7 +191,7 @@ body.subpage .map-section__head h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: clamp(16px, 2vw, 28px);
+  padding-left: 0;
 }
 
 .contact-socials-card__intro .section-label {
@@ -288,8 +274,9 @@ body.subpage .map-section__head h2 {
 }
 
 .contact-socials-row:nth-child(1) .contact-socials-row__icon svg {
-  fill: currentColor;
-  stroke: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
 }
 
 .contact-socials-row:nth-child(2) .contact-socials-row__icon svg {
@@ -376,13 +363,6 @@ body.subpage .map-section {
   .contact-socials-card__intro {
     padding-left: 0;
   }
-
-  .contact-socials-card::before {
-    top: 22px;
-    bottom: auto;
-    height: 96px;
-    width: 70px;
-  }
 }
 
 @media (max-width: 560px) {
@@ -425,15 +405,6 @@ body.subpage .map-section {
     gap: 30px;
     padding: 28px 22px 24px;
     border-radius: 28px;
-  }
-
-  .contact-socials-card::before {
-    left: -1px;
-    top: 20px;
-    width: 58px;
-    height: 82px;
-    bottom: auto;
-    clip-path: path("M 0 0 C 36 0 56 18 56 40 C 56 64 34 86 0 104 L 0 0 Z");
   }
 
   .contact-socials-card::after {
