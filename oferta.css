@@ -174,33 +174,14 @@
   border-top: 1px solid var(--navy);
 }
 
-.offer-consult__journey-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 13px 0 15px;
-  border-bottom: 1px solid var(--line);
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-
-.offer-consult__journey-head span:last-child {
-  color: rgba(23, 40, 79, .52);
-  font-weight: 400;
-}
-
 .offer-consult__journey-row {
   position: relative;
   display: grid;
-  grid-template-columns: 88px minmax(250px, .72fr) minmax(0, 1.28fr);
-  gap: clamp(22px, 3.5vw, 52px);
+  grid-template-columns: 54px minmax(260px, .72fr) minmax(0, 1.28fr);
+  gap: clamp(20px, 3vw, 46px);
   align-items: center;
-  min-height: 126px;
-  padding: 28px 0;
+  min-height: 132px;
+  padding: 30px 0;
   border-bottom: 1px solid var(--line);
   transition: padding-left .32s ease;
 }
@@ -230,7 +211,8 @@
 
 .offer-consult__journey-num {
   align-self: start;
-  padding-top: 8px;
+  justify-self: start;
+  padding-top: 7px;
   color: var(--gold);
   font-family: var(--display);
   font-size: 15px;
@@ -400,12 +382,15 @@
 /* ---------- 04. Pełne opisy pakietów ---------- */
 
 .offer-packs {
+  padding-top: clamp(96px, 8.5vw, 142px);
+  padding-bottom: clamp(104px, 9vw, 154px);
   border-top: 1px solid var(--line);
   background: var(--cream);
 }
 
 .offer-packs__head {
-  margin-bottom: clamp(36px, 4vw, 56px);
+  max-width: 980px;
+  margin-bottom: clamp(64px, 6vw, 92px);
 }
 
 .offer-packs__head .section-label {
@@ -414,7 +399,7 @@
 
 .offer-packs__head h2 {
   margin: 0;
-  font-size: clamp(42px, 4.2vw, 70px) !important;
+  font-size: clamp(48px, 4.7vw, 78px) !important;
   line-height: .98 !important;
 }
 
@@ -438,85 +423,54 @@
 
 .offer-pack > summary {
   display: grid;
-  grid-template-columns: 70px minmax(220px, .78fr) minmax(0, 1.22fr) 56px;
-  gap: clamp(18px, 3vw, 48px);
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
+  gap: clamp(48px, 7vw, 112px);
   align-items: center;
-  padding: clamp(24px, 2.6vw, 34px) 24px 0 0;
+  min-height: 142px;
+  padding: clamp(42px, 4vw, 58px) 0;
   list-style: none;
   cursor: pointer;
   overflow: visible;
+  transition: padding-left .3s ease, background-color .3s ease;
 }
 
 .offer-pack > summary::-webkit-details-marker {
   display: none;
 }
 
-.offer-pack__num {
-  color: var(--gold);
-  font-family: var(--display);
-  font-size: 15px;
-  letter-spacing: .2em;
-}
 
 .offer-pack__title {
   color: var(--navy-dark);
   font-family: var(--display);
-  font-size: clamp(26px, 2.2vw, 36px);
+  font-size: clamp(30px, 2.55vw, 42px);
   line-height: 1.05;
   letter-spacing: .03em;
   text-transform: uppercase;
 }
 
 .offer-pack__lead {
+  max-width: 720px;
   color: rgba(23, 40, 79, .7);
-  font-size: 15px;
-  line-height: 1.62;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
-.offer-pack__drop {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  display: block;
-  justify-self: end;
-  margin-right: 0;
-  border: 1px solid rgba(40,61,104,.34);
-  border-radius: 50%;
-  flex-shrink: 0;
-  transition:
-    transform .35s ease,
-    border-radius .35s ease,
-    background .25s ease,
-    border-color .25s ease,
-    box-shadow .25s ease;
+.offer-pack > summary:hover,
+.offer-pack > summary:focus-visible {
+  padding-left: 12px;
 }
 
-.offer-pack:hover .offer-pack__drop,
-.offer-pack:focus-within .offer-pack__drop {
-  border-color: rgba(40,61,104,.78);
-  border-radius: 50% 50% 8% 50%;
-  background: rgba(40,61,104,.16);
-  transform: rotate(-45deg);
-}
-
-.offer-pack[open] .offer-pack__drop {
-  border-color: var(--navy);
-  border-radius: 50% 50% 8% 50%;
-  background: var(--navy);
-  box-shadow: 0 10px 22px rgba(40,61,104,.22);
-  transform: rotate(45deg);
-}
 
 .offer-pack__body {
   display: grid;
   grid-template-rows: 0fr;
-  padding: 0 10px 0 70px;
+  padding: 0 0 0 calc(28% + clamp(48px, 7vw, 112px));
   transition: grid-template-rows .5s cubic-bezier(.2, .75, .25, 1), padding-bottom .35s ease;
 }
 
 .offer-pack[open] .offer-pack__body {
   grid-template-rows: 1fr;
-  padding-bottom: clamp(28px, 3vw, 40px);
+  padding-bottom: clamp(42px, 4vw, 58px);
 }
 
 .offer-pack__body-inner {
@@ -525,7 +479,7 @@
 
 .offer-pack__body p {
   max-width: 900px;
-  margin: 0 0 16px;
+  margin: 0 0 20px;
   color: rgba(23, 40, 79, .72);
   font-size: 16px;
   line-height: 1.75;
@@ -798,19 +752,20 @@
     grid-template-columns: 52px minmax(220px, .8fr) minmax(0, 1.2fr);
   }
 
+
   .offer-pack > summary {
-    grid-template-columns: 52px minmax(0, 1fr) 52px;
-    padding-right: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    min-height: 0;
+    padding: 34px 0;
   }
 
   .offer-pack__lead {
-    grid-column: 2;
-    grid-row: 2;
-    margin-top: 8px;
+    margin-top: 0;
   }
 
   .offer-pack__body {
-    padding-left: 52px;
+    padding-left: 0;
   }
 }
 
@@ -990,21 +945,10 @@
     font-size: 15px;
   }
 
-  .offer-pack > summary {
-    grid-template-columns: 38px minmax(0, 1fr) 44px;
-    gap: 12px;
-    padding-right: 14px;
-  }
-
-  .offer-pack__drop {
-    width: 36px;
-    height: 36px;
-    margin-right: 0;
-  }
 
   .offer-pack__body {
-    padding-left: 38px;
-    padding-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -1014,7 +958,7 @@
 
 @media (max-width: 900px) {
   .offer-consult__journey-row {
-    grid-template-columns: 58px minmax(0, 1fr);
+    grid-template-columns: 46px minmax(0, 1fr);
     gap: 8px 22px;
     align-items: start;
   }
@@ -1030,14 +974,9 @@
 }
 
 @media (max-width: 620px) {
-  .offer-consult__journey-head {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 5px;
-  }
 
   .offer-consult__journey-row {
-    grid-template-columns: 38px minmax(0, 1fr);
+    grid-template-columns: 34px minmax(0, 1fr);
     gap: 8px 14px;
     min-height: 0;
     padding: 24px 0;
@@ -1063,5 +1002,47 @@
   .offer-consult__journey-row::after {
     width: 6px;
     height: 6px;
+  }
+}
+
+@media (max-width: 900px) {
+  .offer-packs {
+    padding-top: 82px;
+    padding-bottom: 92px;
+  }
+
+  .offer-packs__head {
+    margin-bottom: 54px;
+  }
+
+  .offer-pack > summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-height: 0;
+    padding: 34px 0;
+  }
+
+  .offer-pack > summary:hover,
+  .offer-pack > summary:focus-visible {
+    padding-left: 0;
+  }
+
+  .offer-pack__body {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .offer-packs {
+    padding-top: 68px;
+    padding-bottom: 76px;
+  }
+
+  .offer-packs__head {
+    margin-bottom: 40px;
+  }
+
+  .offer-pack > summary {
+    padding: 28px 0;
   }
 }
