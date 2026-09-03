@@ -134,7 +134,7 @@
   column-gap: clamp(50px, 8vw, 130px);
   row-gap: 20px;
   align-items: start;
-  margin-bottom: clamp(48px, 5vw, 72px);
+  margin-bottom: clamp(42px, 5vw, 64px);
 }
 
 .offer-consult__head .section-label {
@@ -169,46 +169,56 @@
   height: 18px;
 }
 
-.offer-consult__facts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.offer-consult__steps {
   border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
 }
 
-.offer-consult__facts article {
-  min-height: 248px;
-  padding: clamp(26px, 2.7vw, 38px);
-  border-right: 1px solid var(--line);
+.offer-consult__step {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 20px clamp(24px, 4vw, 46px);
+  align-items: start;
+  padding: clamp(24px, 2.8vw, 34px) 0;
   border-bottom: 1px solid var(--line);
+  transition: transform .28s ease, padding-left .28s ease, background .28s ease;
 }
 
-.offer-consult__facts span {
-  display: block;
-  margin-bottom: clamp(48px, 5vw, 76px);
+.offer-consult__step:hover {
+  transform: translateX(4px);
+}
+
+.offer-consult__step-num {
+  padding-top: 5px;
   color: var(--gold);
   font-family: var(--display);
   font-size: 14px;
   letter-spacing: .18em;
 }
 
-.offer-consult__facts h3 {
-  margin: 0 0 13px;
+.offer-consult__step-copy {
+  display: grid;
+  grid-template-columns: minmax(240px, .75fr) minmax(0, 1.25fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+.offer-consult__step h3 {
+  margin: 0;
   color: var(--navy-dark);
   font-family: var(--display);
-  font-size: clamp(24px, 2vw, 31px);
+  font-size: clamp(28px, 2.35vw, 38px);
   font-weight: 400;
-  line-height: 1.06;
+  line-height: 1.05;
   letter-spacing: .03em;
   text-transform: uppercase;
 }
 
-.offer-consult__facts p {
-  max-width: 360px;
+.offer-consult__step p {
+  max-width: 680px;
   margin: 0;
   color: rgba(23, 40, 79, .68);
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.68;
 }
 
 /* ---------- 03. Tabela porównawcza pakietów ---------- */
@@ -280,18 +290,9 @@
   text-transform: uppercase;
 }
 
-.offer-matrix__desc {
-  display: block;
-  margin-top: 10px;
-  max-width: 240px;
-  color: rgba(23, 40, 79, .62);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
 .offer-matrix__flag {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 18px;
   padding: 5px 12px;
   border: 1px solid rgba(202, 160, 48, .55);
   border-radius: 999px 999px 3px 999px;
@@ -393,12 +394,13 @@
 
 .offer-pack > summary {
   display: grid;
-  grid-template-columns: 70px minmax(220px, .78fr) minmax(0, 1.22fr) 44px;
+  grid-template-columns: 70px minmax(220px, .78fr) minmax(0, 1.22fr) 56px;
   gap: clamp(18px, 3vw, 48px);
   align-items: center;
-  padding: clamp(24px, 2.6vw, 34px) 0;
+  padding: clamp(24px, 2.6vw, 34px) 10px 0;
   list-style: none;
   cursor: pointer;
+  overflow: visible;
 }
 
 .offer-pack > summary::-webkit-details-marker {
@@ -429,12 +431,14 @@
 
 .offer-pack__drop {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: block;
   justify-self: end;
+  margin-right: 4px;
   border: 1px solid rgba(40,61,104,.34);
   border-radius: 50%;
+  flex-shrink: 0;
   transition:
     transform .35s ease,
     border-radius .35s ease,
@@ -460,8 +464,19 @@
 }
 
 .offer-pack__body {
-  padding: 0 clamp(0px, 4vw, 60px) clamp(28px, 3vw, 40px) 70px;
-  animation: details-in .4s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  padding: 0 10px 0 70px;
+  transition: grid-template-rows .5s cubic-bezier(.2, .75, .25, 1), padding-bottom .35s ease;
+}
+
+.offer-pack[open] .offer-pack__body {
+  grid-template-rows: 1fr;
+  padding-bottom: clamp(28px, 3vw, 40px);
+}
+
+.offer-pack__body-inner {
+  overflow: hidden;
 }
 
 .offer-pack__body p {
@@ -740,7 +755,7 @@
   }
 
   .offer-pack > summary {
-    grid-template-columns: 52px minmax(0, 1fr) 44px;
+    grid-template-columns: 52px minmax(0, 1fr) 52px;
   }
 
   .offer-pack__lead {
@@ -785,10 +800,6 @@
     padding: 18px 22px 20px;
     border: 1px solid var(--line);
     border-radius: 26px 26px 4px 26px;
-  }
-
-  .offer-matrix__desc {
-    max-width: none;
   }
 
   .offer-matrix__table tbody tr {
@@ -935,69 +946,37 @@
   }
 
   .offer-pack > summary {
-    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    grid-template-columns: 38px minmax(0, 1fr) 44px;
     gap: 12px;
+    padding-right: 6px;
   }
 
   .offer-pack__drop {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
+    margin-right: 2px;
   }
 
   .offer-pack__body {
     padding-left: 38px;
+    padding-right: 6px;
   }
 }
 
 
-/* ---------- 03.09.2026 — finalne poprawki podstrony Oferta ---------- */
-@media (max-width: 900px) {
-  .offer-consult__head {
-    grid-template-columns: 1fr;
+
+@media (max-width: 700px) {
+  .offer-consult__step {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px 16px;
+    padding: 24px 0;
   }
 
-  .offer-consult__intro {
-    max-width: 680px;
-    padding-top: 0;
+  .offer-consult__step-num {
+    font-size: 12px;
   }
 
-  .offer-consult__facts {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-consult__facts article {
-    min-height: 0;
-  }
-
-  .offer-consult__facts span {
-    margin-bottom: 28px;
-  }
-}
-
-@media (max-width: 640px) {
-  .offer-consult {
-    padding-top: 58px;
-    padding-bottom: 64px;
-  }
-
-  .offer-consult__head {
-    margin-bottom: 38px;
-  }
-
-  .offer-consult__head h2 {
-    font-size: clamp(40px, 13vw, 56px) !important;
-  }
-
-  .offer-consult__intro p {
-    font-size: 15px;
-  }
-
-  .offer-consult__facts article {
-    padding: 24px 22px 26px;
-  }
-
-  .offer-pack__drop {
-    width: 40px;
-    height: 40px;
+  .offer-consult__step h3 {
+    font-size: clamp(24px, 8vw, 32px);
   }
 }
