@@ -8656,12 +8656,12 @@ body.home .header:not(.is-scrolled):not(.menu-open) .header-logo__img--negative 
 
 /* ---------- 5. MAPA — dziubek jak w przycisku „Wyznacz trasę" ---------- */
 .map {
-  border-radius: 32px 32px 4px 32px;
+  border-radius: 32px 32px 4px 32px !important;
 }
 
 @media (max-width: 900px) {
   .map {
-    border-radius: 26px 26px 4px 26px;
+    border-radius: 26px 26px 4px 26px !important;
   }
 }
 
