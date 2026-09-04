@@ -1302,3 +1302,10 @@
     border-radius: 28px 28px 4px 28px;
   }
 }
+
+/* Po usunięciu hero „Oferta" pierwsza sekcja wjeżdżała pod przyklejony
+   nagłówek — dostaje ten sam odstęp od góry co hero podstron. */
+.offer-page main > section:first-of-type {
+  padding-top: calc(var(--header-h) + 82px);
+  border-top: 0;
+}
