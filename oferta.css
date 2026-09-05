@@ -1316,3 +1316,9 @@
 .offer-extra {
   min-height: 0;
 }
+
+/* Znaczki „+" w kształcie łezki, zgodnie z językiem graficznym reszty serwisu. */
+.offer-matrix__more i,
+.extra-service__more i {
+  border-radius: 999px 999px 4px 999px;
+}

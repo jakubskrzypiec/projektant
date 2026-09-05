@@ -357,3 +357,10 @@ body.projects-page .page-hero {
   padding-top: calc(var(--header-h) + 52px);
   padding-bottom: 40px;
 }
+
+/* Tytuły kafli w tym samym zapisie co w karuzeli na stronie głównej. */
+.projects-page-card__title {
+  font-size: 27px;
+  letter-spacing: normal;
+  line-height: 1.1;
+}
