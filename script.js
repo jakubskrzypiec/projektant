@@ -98,8 +98,43 @@ if (finePointerGlow) {
     panel.addEventListener("pointercancel", () => clearSpotlight(panel), { passive: true });
   });
 
+  /* Przy przewijaniu swiatlo gaslo, mimo ze kursor dalej stal na kaflu -
+     wracalo dopiero po ruszeniu mysza, co dawalo efekt migotania.
+     Zamiast gasic wszystko, przeliczamy pozycje wzgledem ostatnio znanego
+     kursora: kafel pod kursorem zachowuje swiatlo we wlasciwym miejscu,
+     pozostale je traca. Wyglad swiatla sie nie zmienia. */
+  let ostatniKursor = null;
+  let odswiezanieZaplanowane = false;
+
+  window.addEventListener("pointermove", event => {
+    ostatniKursor = { x: event.clientX, y: event.clientY };
+  }, { passive: true });
+
+  const przeliczSpotlighty = () => {
+    odswiezanieZaplanowane = false;
+    if (!ostatniKursor) return clearAllSpotlights();
+
+    spotlightPanels.forEach(panel => {
+      const rect = panel.getBoundingClientRect();
+      const pod = ostatniKursor.x >= rect.left && ostatniKursor.x <= rect.right
+               && ostatniKursor.y >= rect.top  && ostatniKursor.y <= rect.bottom;
+
+      if (pod) {
+        panel.style.setProperty("--mx", `${ostatniKursor.x - rect.left}px`);
+        panel.style.setProperty("--my", `${ostatniKursor.y - rect.top}px`);
+        panel.classList.add("is-pointer-glow");
+      } else if (panel.classList.contains("is-pointer-glow")) {
+        clearSpotlight(panel);
+      }
+    });
+  };
+
   window.addEventListener("blur", clearAllSpotlights);
-  window.addEventListener("scroll", clearAllSpotlights, { passive: true });
+  window.addEventListener("scroll", () => {
+    if (odswiezanieZaplanowane) return;
+    odswiezanieZaplanowane = true;
+    requestAnimationFrame(przeliczSpotlighty);
+  }, { passive: true });
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) clearAllSpotlights();
   });
@@ -369,6 +404,42 @@ if ("ResizeObserver" in window && track) {
   carouselResizeObserver.observe(track);
 }
 
+/* Kotwica przewijania dla harmonijek.
+   Przy rozwijaniu jednego elementu sasiedni sie zwija, wiec wszystko pod nim
+   jedzie w gore i klikniety naglowek ucieka spod kursora (zmierzone do 344 px).
+   Natywne kotwiczenie przegladarki nie lapie zmian wysokosci animowanych przez
+   Web Animations, dlatego trzymamy pozycje sami przez czas trwania animacji.
+   Nie zmienia to wygladu ani samych animacji - tylko punkt widzenia. */
+const trzymajWMiejscu = (element, czas = 520) => {
+  if (!element) return;
+  const korzen = document.documentElement;
+  const poczatek = element.getBoundingClientRect().top;
+  const plynne = getComputedStyle(korzen).scrollBehavior;
+  let recznePrzewijanie = false;
+
+  const przerwij = () => { recznePrzewijanie = true; };
+  ["wheel", "touchstart", "keydown"].forEach(z =>
+    window.addEventListener(z, przerwij, { passive: true, once: true }));
+
+  korzen.style.scrollBehavior = "auto";
+  const koniec = performance.now() + czas;
+
+  const krok = () => {
+    if (recznePrzewijanie) return sprzatnij();
+    const roznica = element.getBoundingClientRect().top - poczatek;
+    if (Math.abs(roznica) > 0.5) window.scrollTo(0, window.scrollY + roznica);
+    if (performance.now() < koniec) requestAnimationFrame(krok);
+    else sprzatnij();
+  };
+
+  const sprzatnij = () => {
+    korzen.style.scrollBehavior = plynne === "smooth" ? "" : plynne;
+    ["wheel", "touchstart", "keydown"].forEach(z => window.removeEventListener(z, przerwij));
+  };
+
+  requestAnimationFrame(krok);
+};
+
 /* Stable DETAILS animation — FAQ + packages */
 const detailsAnimations = new WeakMap();
 const detailsTargetOpen = new WeakMap();
@@ -469,6 +540,7 @@ faqItems.forEach(item => {
   summary.addEventListener("click", event => {
     event.preventDefault();
     const willOpen = getNextDetailsState(item);
+    trzymajWMiejscu(summary);
 
     if (willOpen) {
       faqItems.forEach(other => {
@@ -551,6 +623,7 @@ setProcessProgress(0);
 processItems.forEach((item, index) => {
   const button = item.querySelector("[data-process-toggle]");
   button?.addEventListener("click", () => {
+    trzymajWMiejscu(button);
     const willOpen = !item.classList.contains("is-open");
     processItems.forEach(other => {
       const open = willOpen && other === item;
@@ -659,6 +732,7 @@ if (packToggles.length && packPanels.length) {
 
   packToggles.forEach(toggle => {
     toggle.addEventListener("click", () => {
+      trzymajWMiejscu(toggle);
       const id = toggle.dataset.packToggle;
       const willOpen = toggle.getAttribute("aria-expanded") !== "true";
 
@@ -674,12 +748,6 @@ if (packToggles.length && packPanels.length) {
         if (open !== wasOpen) setPanel(panel, open);
       });
 
-      if (willOpen) {
-        const panel = panelFor(id);
-        window.setTimeout(() => {
-          panel?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-        }, 120);
-      }
     });
   });
 }

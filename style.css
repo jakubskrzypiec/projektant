@@ -5915,8 +5915,11 @@ svg {
   }
 }
 
+/* Kotwiczenie przewijania wlaczone z powrotem: bez niego klikniety etap
+   uciekal spod kursora nawet o 344 px, gdy nad nim zwijal sie poprzedni.
+   Kratka w tle i tak nie skacze, bo body ma background-attachment: fixed. */
 .process {
-  overflow-anchor: none;
+  overflow-anchor: auto;
 }
 
 /* Dłuższe teksty: ładniejsze łamanie także zanim wykona się JS typography fix. */
