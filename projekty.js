@@ -1,6 +1,6 @@
 const projects = [
   {
-    "title": "DOM Z ANTRESOLA",
+    "title": "Dom z antresolą",
     "category": "PROJEKT WNĘTRZA",
     "description": "Dwupoziomowa strefa dzienna łączy naturalne drewno, cegłę i czarne stalowe akcenty z jasną, spokojną bazą. Otwarta kuchnia i salon pod antresolą budują przestronne wnętrze, a widoczne belki oraz zieleń dodają mu ciepła i charakteru. Całość uzupełniają proste zabudowy i neutralne materiały w łazience oraz komunikacji.",
     "folder": "01_Dom-z-antresola",
@@ -31,7 +31,7 @@ const projects = [
     ]
   },
   {
-    "title": "APARTAMENT LOFT",
+    "title": "Apartament loft",
     "category": "PROJEKT WNĘTRZA",
     "description": "Ciemny, loftowy apartament opiera się na graficie, czerni i surowych strukturach przełamanych głębokim bordo. Metalowe detale, kamienne powierzchnie i techniczne oświetlenie podkreślają industrialny charakter strefy dziennej. W prywatnych pomieszczeniach pojawiają się cieplejsze drewno i zieleń, dzięki czemu wnętrze pozostaje wyraziste, ale nie chłodne.",
     "folder": "02_Apartament-loft-dark",
@@ -62,7 +62,7 @@ const projects = [
     ]
   },
   {
-    "title": "PODDASZE Z BELKAMI",
+    "title": "Poddasze z belkami",
     "category": "PROJEKT WNĘTRZA",
     "description": "Projekt wykorzystuje charakter poddasza i pozostawia drewniane belki jako najważniejszy element wnętrza. Jasne drewno, złamane biele i przygaszona zieleń są zestawione z cegłą oraz roślinnymi motywami, tworząc ciepłą i swobodną całość. Zaokrąglone zabudowy i miękkie formy mebli równoważą wyrazistą konstrukcję dachu.",
     "folder": "03_Poddasze-z-belkami",
@@ -91,7 +91,7 @@ const projects = [
     ]
   },
   {
-    "title": "APARTAMENT Z WIDOKIEM",
+    "title": "Apartament z widokiem",
     "category": "PROJEKT WNĘTRZA",
     "description": "Jasny apartament został zaprojektowany tak, aby pierwszoplanową rolę odgrywały duże przeszklenia i widok na miasto. Kremowe tkaniny, delikatne drewno i spokojne beże tworzą elegancką bazę, którą przełamują ciemniejsze, kamienne akcenty. Wnętrze jest lekkie i uporządkowane, z subtelną nutą hotelowego charakteru.",
     "folder": "04_Apartament-z-widokiem",
@@ -118,7 +118,7 @@ const projects = [
     ]
   },
   {
-    "title": "MIESZKANIE BORDO",
+    "title": "Mieszkanie bordo",
     "category": "PROJEKT WNĘTRZA",
     "description": "Ciepłe drewno i spokojne beże zostały tutaj zestawione z bordowymi detalami oraz czarnymi, metalowymi podziałami. Otwarta strefa dzienna ma graficzny charakter, ale dzięki naturalnym materiałom i miękkim tkaninom pozostaje przytulna. Ten sam język kolorystyczny przechodzi do sypialni, komunikacji i łazienki, tworząc spójną całość.",
     "folder": "05_Mieszkanie-bordo",
@@ -149,7 +149,7 @@ const projects = [
     ]
   },
   {
-    "title": "LOFT CEGLANY",
+    "title": "Loft ceglany",
     "category": "PROJEKT WNĘTRZA",
     "description": "Loft łączy odsłoniętą konstrukcję dachu, cegłę i surowe struktury z miękkimi, naturalnymi kolorami. Drewniane belki i podłogi ocieplają przestrzeń, a proste meble oraz rzeźbiarskie oświetlenie nadają jej współczesny charakter. Poszczególne pomieszczenia różnią się nastrojem, ale zachowują wspólną, lekko industrialną bazę.",
     "folder": "06_Loft-ceglany",
@@ -178,7 +178,7 @@ const projects = [
     ]
   },
   {
-    "title": "INDUSTRIAL GREEN",
+    "title": "Industrial green",
     "category": "PROJEKT WNĘTRZA",
     "description": "Industrialna baza z betonu, grafitu i czarnych detali została ożywiona głęboką, oliwkową zielenią. Techniczne oświetlenie i metalowe podziały podkreślają zdecydowany charakter kuchni oraz salonu, a drewniana podłoga dodaje im cieplejszego tonu. W łazience ciemne powierzchnie i punktowe światło budują bardziej nastrojową, kompaktową przestrzeń.",
     "folder": "07_Industrial-green",
@@ -205,7 +205,7 @@ const projects = [
     ]
   },
   {
-    "title": "APARTAMENT GLAMOUR",
+    "title": "Apartament glamour",
     "category": "PROJEKT WNĘTRZA",
     "description": "Jasny apartament glamour bazuje na kremach, pudrowym różu i delikatnych złotych detalach. Duży roślinny motyw na ścianie staje się dekoracyjnym tłem dla miękkiej strefy wypoczynkowej, a zaokrąglone zabudowy łagodzą geometrię wnętrza. Całość jest lekka, elegancka i celowo pozbawiona ciężkich kontrastów.",
     "folder": "08_Apartament-glamour",
@@ -230,7 +230,7 @@ const projects = [
     ]
   },
   {
-    "title": "MIESZKANIE Z JODELKA",
+    "title": "Mieszkanie z jodełką",
     "category": "PROJEKT WNĘTRZA",
     "description": "Wnętrze opiera się na ciepłej, eleganckiej bazie z drewnianą podłogą układaną w jodełkę. Beże i złamane biele zestawiono z czarnymi liniami oświetlenia oraz pojedynczymi, głębszymi akcentami kolorystycznymi. Proste zabudowy, marmurowe powierzchnie i oszczędne detale tworzą spokojną, dopracowaną przestrzeń.",
     "folder": "09_Mieszkanie-jodelka",
@@ -251,7 +251,7 @@ const projects = [
     ]
   },
   {
-    "title": "MIESZKANIE BEZOWE",
+    "title": "Mieszkanie beżowe",
     "category": "PROJEKT WNĘTRZA",
     "description": "Spokojne, beżowe mieszkanie zostało utrzymane w miękkiej, niemal monochromatycznej palecie. Jasne zabudowy, naturalne drewno i ciepłe światło porządkują niewielką przestrzeń, a czarne linie oświetlenia dodają jej nowoczesnego rytmu. Funkcjonalne rozwiązania w kuchni, gabinecie i łazience pozostają dyskretne i spójne z minimalistycznym charakterem całości.",
     "folder": "10_Mieszkanie-bezowe",
