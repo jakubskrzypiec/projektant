@@ -458,3 +458,22 @@ body.subpage .map-section {
     height: 28px;
   }
 }
+
+/* Nagłówek formularza łamie się tak samo jak na stronie głównej.
+   Reguły w style.css są zawężone do `.home`, więc na podstronie wracały
+   wpisane w kod <br> i inny limit szerokości — stąd sześć linii zamiast czterech. */
+body.subpage .contact__page--left h2 {
+  max-width: 14.2ch !important;
+  min-height: 5.2em;
+}
+
+body.subpage .contact__page--left h2 br {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  body.subpage .contact__page--left h2 {
+    max-width: 13.5ch !important;
+    min-height: 4.7em;
+  }
+}
