@@ -477,3 +477,20 @@ body.subpage .contact__page--left h2 br {
     min-height: 4.7em;
   }
 }
+
+
+/* =========================================================
+   KOREKTA KLIENTA — 06.09.2026 / usunięty nagłówek Kontakt
+   ========================================================= */
+
+/* Po usunięciu page-hero pierwsza sekcja zachowuje bezpieczny odstęp
+   od stałego nagłówka i zaczyna stronę bez pustego pasa. */
+body.subpage .contact-team-preview {
+  padding-top: clamp(138px, calc(68px + 7vw), 180px);
+}
+
+@media (max-width: 820px) {
+  body.subpage .contact-team-preview {
+    padding-top: 126px;
+  }
+}

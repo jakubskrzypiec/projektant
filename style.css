@@ -8770,3 +8770,35 @@ body.is-modal-open {
 .consent > span {
   font-size: 14px !important;
 }
+
+
+/* =========================================================
+   KOREKTA KLIENTA — 06.09.2026 / pakiety na landing page
+   ========================================================= */
+
+/* Wszystkie opisy w kaflach zaczynają się na tej samej wysokości. */
+.home .packages .package-card h3 {
+  min-height: 2.2em !important;
+  margin-bottom: 8px !important;
+}
+
+.home .packages .package-card summary p {
+  margin-top: 0 !important;
+}
+
+/* Mniejsza interlinia przy ewentualnych listach z myślnikami oraz
+   ciaśniejsze odstępy między podnagłówkami w rozwinięciu. */
+.home .packages .package-card__body li {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  line-height: 1.42 !important;
+}
+
+.home .packages .package-card__body h4:not(:first-child),
+.home .packages .package-card__body > p + h4 {
+  margin-top: 18px !important;
+}
+
+.home .packages .package-card__body h4 {
+  margin-bottom: 8px !important;
+}
