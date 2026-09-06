@@ -8805,26 +8805,6 @@ body.is-modal-open {
 
 
 /* =========================================================
-   KOREKTA KLIENTA — 06.09.2026 / wyrównanie CTA w pakietach
-   ========================================================= */
-@media (min-width: 901px) {
-  .home .packages .package-card[open] {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .home .packages .package-card[open] .package-card__body {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-  }
-
-  .home .packages .package-card[open] .package-card__foot {
-    margin-top: auto;
-  }
-}
-
-/* =========================================================
    KOREKTA KLIENTA — 06.09.2026 / finalne wyrównanie pakietów
    ========================================================= */
 
@@ -8841,26 +8821,6 @@ body.is-modal-open {
     align-items: stretch !important;
   }
 
-  .home .packages .package-card[open] {
-    position: relative !important;
-    height: 100% !important;
-    padding-bottom: 112px !important;
-    box-sizing: border-box;
-  }
-
-  .home .packages .package-card[open] .package-card__body {
-    display: block !important;
-    flex: none !important;
-    padding-bottom: 0 !important;
-  }
-
-  .home .packages .package-card[open] .package-card__foot {
-    position: absolute !important;
-    left: 30px !important;
-    right: 30px !important;
-    bottom: 34px !important;
-    margin: 0 !important;
-  }
 }
 
 /* =========================================================
@@ -8885,11 +8845,14 @@ body.is-modal-open {
     flex-shrink: 0 !important;
   }
 
-  /* Treść rozwinięcia wypełnia pozostałą wysokość całego rzędu. */
+  /* Treść rozwinięcia wypełnia pozostałą wysokość całego rzędu.
+     `height: 100%` jest tu konieczne — samo rozciąganie grida nie działa,
+     bo rozwinięcie <details> nie dostaje wysokości wiersza 1fr. */
   .home .packages .package-card[open] > .package-card__body {
     position: static !important;
     display: flex !important;
     flex-direction: column !important;
+    height: 100% !important;
     min-height: 0 !important;
     padding: 0 30px 34px !important;
     box-sizing: border-box !important;
