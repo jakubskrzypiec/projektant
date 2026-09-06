@@ -8823,3 +8823,42 @@ body.is-modal-open {
     margin-top: auto;
   }
 }
+
+/* =========================================================
+   KOREKTA KLIENTA — 06.09.2026 / finalne wyrównanie pakietów
+   ========================================================= */
+
+/* Wszystkie nazwy pakietów zaczynają się dokładnie na tej samej wysokości.
+   Dwuwierszowa „Konsultacja projektowa” nie jest już podciągnięta do góry. */
+.home .packages .package-card h3 {
+  align-items: flex-start !important;
+}
+
+/* Desktop: przyciski „Zobacz szczegóły pakietu” są przypięte do jednej osi
+   niezależnie od długości opisu w poszczególnych pakietach. */
+@media (min-width: 901px) {
+  .home .packages .packages__grid {
+    align-items: stretch !important;
+  }
+
+  .home .packages .package-card[open] {
+    position: relative !important;
+    height: 100% !important;
+    padding-bottom: 112px !important;
+    box-sizing: border-box;
+  }
+
+  .home .packages .package-card[open] .package-card__body {
+    display: block !important;
+    flex: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .home .packages .package-card[open] .package-card__foot {
+    position: absolute !important;
+    left: 30px !important;
+    right: 30px !important;
+    bottom: 34px !important;
+    margin: 0 !important;
+  }
+}
