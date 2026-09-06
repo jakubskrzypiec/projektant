@@ -8862,3 +8862,56 @@ body.is-modal-open {
     margin: 0 !important;
   }
 }
+
+/* =========================================================
+   FIX 06.09.2026 — pakiety: równe nagłówki i CTA bez nakładania
+   ========================================================= */
+@media (min-width: 901px) {
+  /* Cofnięcie wcześniejszego absolutnego pozycjonowania przycisków. */
+  .home .packages .package-card[open] {
+    position: relative !important;
+    display: grid !important;
+    grid-template-rows: auto 1fr !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Summary nie może się kurczyć po otwarciu karty. */
+  .home .packages .package-card > summary {
+    min-height: 540px !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Treść rozwinięcia wypełnia pozostałą wysokość całego rzędu. */
+  .home .packages .package-card[open] > .package-card__body {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    padding: 0 30px 34px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CTA ląduje na dole najdłuższej karty, ale pozostaje w normalnym flow. */
+  .home .packages .package-card[open] .package-card__foot {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    margin-top: auto !important;
+    padding-top: 20px !important;
+  }
+
+  /* Jedna linia startowa nazw pakietów. */
+  .home .packages .package-card h3 {
+    min-height: 2.2em !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+}
