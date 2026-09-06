@@ -8802,3 +8802,24 @@ body.is-modal-open {
 .home .packages .package-card__body h4 {
   margin-bottom: 8px !important;
 }
+
+
+/* =========================================================
+   KOREKTA KLIENTA — 06.09.2026 / wyrównanie CTA w pakietach
+   ========================================================= */
+@media (min-width: 901px) {
+  .home .packages .package-card[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home .packages .package-card[open] .package-card__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .home .packages .package-card[open] .package-card__foot {
+    margin-top: auto;
+  }
+}
