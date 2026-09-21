@@ -8878,3 +8878,256 @@ body.is-modal-open {
     margin-bottom: 8px !important;
   }
 }
+
+/* Poprawki klienta: czytelność „O nas”, pakiety, formularz i galeria. */
+.contact-form[hidden] { display: none !important; }
+.consultation-date {
+  min-width: 0;
+  margin: 10px 0 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 24px 24px 4px 24px;
+}
+.consultation-date legend { color: var(--navy); font: 20px var(--display); }
+.consultation-date p { margin: 0 0 16px; font-size: 15px; line-height: 1.5; }
+.consultation-date .form-row { margin: 0; }
+#termin-konsultacji { scroll-margin-top: calc(var(--header-h) + 22px); }
+@media (min-width: 821px) {
+  .about__grid { grid-template-columns: minmax(0, 42%) minmax(0, 58%); }
+  .about__copy { padding: clamp(28px, 2.6vw, 42px); }
+  .about__copy .rich-copy {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(18px, 2.2vw, 36px) !important;
+  }
+}
+.about__copy .rich-copy p {
+  text-align: left !important;
+  hyphens: none !important;
+  overflow-wrap: normal !important;
+}
+.about__names {
+  font-family: var(--display) !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  letter-spacing: .08em !important;
+}
+.about__visual { position: relative; }
+.about__visual .about__names {
+  position: absolute;
+  z-index: 2;
+  left: clamp(20px, 3vw, 44px);
+  bottom: clamp(20px, 3vw, 44px);
+  margin: 0;
+  padding: 10px 16px;
+  max-width: calc(100% - 40px);
+  border-radius: 18px 18px 3px 18px;
+  background: rgba(255,255,255,.84);
+  color: var(--navy);
+}
+.home .packages .package-card h3 { max-width: 11ch; }
+.home .packages .package-card__body ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+.home .packages .package-card__body li {
+  margin: 0 0 2px;
+}
+.contact__form-head p.section-label {
+  font-size: clamp(17px, 1.4vw, 22px) !important;
+}
+.contact__form-head.is-sent h3 { font-size: clamp(34px, 3vw, 48px) !important; }
+.modal { padding: max(18px, 4vh) max(18px, 4vw) !important; }
+.modal__inner {
+  width: min(88vw, 1240px) !important;
+  height: min(80vh, 760px) !important;
+  max-width: calc(100vw - 36px) !important;
+  max-height: calc(100dvh - 48px) !important;
+  grid-template-columns: minmax(0, 2.25fr) minmax(245px, .75fr) !important;
+}
+.modal__main { position: relative !important; }
+.modal__copy { padding: 56px 26px 32px !important; overflow-y: auto !important; }
+.modal__copy h2 { font-size: clamp(26px, 2.15vw, 40px) !important; }
+.modal__close {
+  top: max(20px, calc((100dvh - min(80vh, 760px)) / 2 + 8px)) !important;
+  right: max(20px, calc((100vw - min(88vw, 1240px)) / 2 + 8px)) !important;
+}
+.modal__image-nav {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(40,61,104,.2);
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  color: var(--navy);
+  font: 28px/1 var(--body);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.modal__image-nav--prev { left: 10px; }
+.modal__image-nav--next { right: 10px; }
+@media (max-width: 900px) {
+  .modal__inner {
+    width: min(94vw, 720px) !important;
+    height: auto !important;
+    max-height: calc(100dvh - 32px) !important;
+    grid-template-columns: 1fr !important;
+  }
+  .modal__copy { padding: 22px 20px !important; }
+  .modal__main { height: min(42vh, 460px) !important; }
+  .modal__close { top: calc(4vh + 8px) !important; right: calc(3vw + 8px) !important; }
+}
+
+/* Korekty rozmieszczenia w zeszycie i galerii. */
+@media (min-width: 821px) {
+  .about__grid::after { left: 42%; }
+}
+.home .packages .package-card summary { min-height: 250px !important; }
+.home .packages .package-card > summary { min-height: 250px !important; }
+.home .packages .package-card summary b { display: none; }
+.packages__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 64px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  background: var(--paper);
+  color: var(--navy);
+  font: 18px var(--display);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.packages__toggle span { font-size: 28px; line-height: 1; transition: transform .25s ease; }
+.packages__toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+.packages__toggle:hover, .packages__toggle:focus-visible { background: var(--cream); }
+.modal__inner { grid-template-columns: minmax(0, 4fr) minmax(205px, 1fr) !important; }
+.modal__copy { padding: 56px 20px 28px !important; }
+.modal__copy h2 { font-size: clamp(22px, 1.85vw, 34px) !important; overflow-wrap: anywhere !important; }
+.modal__image { cursor: ew-resize; }
+@media (max-width: 900px) {
+  .modal__inner { grid-template-columns: 1fr !important; }
+  .modal__copy { padding: 22px 20px !important; }
+}
+
+/* Kalendarz kontaktu jest osobnym segmentem pod formularzem. */
+.consultation-section {
+  min-height: 0;
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: var(--cream);
+}
+.consultation-section .consultation-date {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--paper);
+}
+.consultation-section .consultation-date legend { padding: 0 12px; font-size: clamp(24px, 3vw, 36px); }
+.consultation-section .consultation-date label > span {
+  margin-bottom: 8px;
+  color: var(--navy);
+  font: 12px var(--display);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.consultation-section .consultation-date input {
+  width: 100%;
+  padding: 11px 2px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--navy-dark);
+  font: inherit;
+}
+.consultation-section .consultation-date input:focus { outline: none; border-color: var(--gold); }
+.consultation-section__link { display: inline-block; margin-top: 24px; }
+
+/* Wspólne rozwinięcie kart bez skoku układu; strzałka w stabilnym okręgu. */
+.packages__toggle { gap: 12px; }
+.packages__toggle [data-packages-toggle-label] { font-size: inherit; line-height: inherit; transform: none !important; }
+.packages__toggle-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border: 1px solid rgba(40,61,104,.4);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background .25s ease, color .25s ease;
+}
+.packages__toggle-icon::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .25s ease;
+}
+.packages__toggle[aria-expanded="true"] .packages__toggle-icon { background: var(--navy); color: #fff; }
+.packages__toggle[aria-expanded="true"] .packages__toggle-icon::after { transform: translateY(2px) rotate(225deg); }
+.home .packages .package-card > summary { cursor: pointer; }
+
+/* Galeria: zdjęcie zajmuje poprzednią proporcję; białe strzałki jak w karuzeli. */
+.modal__inner { grid-template-columns: minmax(0, 2.25fr) minmax(245px, .75fr) !important; }
+.modal__copy { padding: 56px 26px 32px !important; }
+.modal__copy h2 { font-size: clamp(26px, 2.15vw, 40px) !important; overflow-wrap: normal !important; }
+.modal__image-nav {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(40,61,104,.25);
+  border-radius: 50% 50% 4px 50%;
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 8px 24px rgba(20,35,60,.15);
+  font-size: 0;
+  transition: background .2s ease, transform .2s ease;
+}
+.modal__image-nav:hover { background: var(--cream); transform: translateY(-50%) scale(1.06); }
+.modal__image-nav svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.modal__image-nav--prev svg { transform: rotate(180deg); }
+@media (max-width: 900px) {
+  .modal__inner { grid-template-columns: 1fr !important; }
+  .modal__copy { padding: 22px 20px !important; }
+}
+
+/* Miejsce na terminarz Calendly w osobnym segmencie kontaktu. */
+.consultation-section__calendar { max-width: 860px; margin: 0 auto; }
+.consultation-section__calendar h2 { margin: 0 0 20px; font: clamp(28px, 3vw, 42px) var(--display); color: var(--navy); }
+.consultation-section__calendar .calendly-inline-widget { min-width: 320px; height: 720px; }
+.consultation-section__pending { padding: 28px; border: 1px solid var(--line); border-radius: 28px 28px 4px 28px; background: var(--paper); }
+.consultation-section__pending p { margin: 0 0 20px; }
+
+/* W czasie rozwijania nagłówek karty zachowuje tę samą wysokość. */
+.packages__grid { scroll-margin-top: calc(var(--header-h) + 20px); }
+@media (min-width: 901px) {
+  .home .packages .package-card[open] > summary { min-height: 250px !important; }
+  .home .packages .package-card[open] { grid-template-rows: 250px minmax(0, 1fr) !important; }
+}
+.packages__toggle:disabled { opacity: 1; cursor: wait; }
+.packages__toggle-icon { transform: none !important; }
+.packages__toggle-icon::after { content: none !important; }
+.packages__toggle-icon svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .25s ease;
+}
+.packages__toggle[aria-expanded="true"] .packages__toggle-icon svg { transform: rotate(180deg); }
+
+/* Pole wiadomości ma własne linie; nie dokładaj obramowania pod ostatnią. */
+.contact-form textarea { border-bottom: 0 !important; }

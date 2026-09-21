@@ -147,6 +147,7 @@ const modalTitle = modal?.querySelector("[data-modal-title]");
 const modalCategory = modal?.querySelector("[data-modal-category]");
 const modalThumbs = modal?.querySelector("[data-modal-thumbs]");
 const modalDescription = modal?.querySelector("[data-modal-description]");
+let modalImages = [];
 let lastFocus = null;
 let modalGalleryAlts = new Map();
 
@@ -160,6 +161,93 @@ const selectModalImage = source => {
     button.setAttribute("aria-pressed", String(active));
   });
 };
+
+const stepModalImage = direction => {
+  if (!modalImages.length || !modalImage) return;
+  const index = modalImages.indexOf(modalImage.getAttribute("src"));
+  selectModalImage(modalImages[(index + direction + modalImages.length) % modalImages.length]);
+};
+modal?.querySelector("[data-image-prev]")?.addEventListener("click", () => stepModalImage(-1));
+modal?.querySelector("[data-image-next]")?.addEventListener("click", () => stepModalImage(1));
+modalImage?.addEventListener("click", event => {
+  const bounds = modalImage.getBoundingClientRect();
+  stepModalImage(event.clientX < bounds.left + bounds.width / 2 ? -1 : 1);
+});
+
+const packagesToggle = document.querySelector("[data-packages-toggle]");
+const packageCards = [...document.querySelectorAll(".packages__grid .package-card")];
+const packagesGrid = document.querySelector(".packages__grid");
+packagesToggle?.addEventListener("click", async () => {
+  if (packagesToggle.disabled) return;
+  const open = packagesToggle.getAttribute("aria-expanded") !== "true";
+  packagesToggle.disabled = true;
+
+  /* Najpierw wróć na początek pakietów: przy zwijaniu przycisk znajduje się
+     pod długimi opisami, więc samo zmniejszenie wysokości przesuwa widok w dół. */
+  if (!open) {
+    packagesGrid.scrollIntoView({ behavior: reduceMotion ? "instant" : "smooth", block: "start" });
+    if (!reduceMotion) await new Promise(resolve => window.setTimeout(resolve, 520));
+  }
+
+  const from = packagesGrid.getBoundingClientRect().height;
+  packagesGrid.style.height = "auto";
+  packageCards.forEach(card => { card.open = open; });
+  const to = packagesGrid.scrollHeight;
+  /* Przy zamykaniu zachowaj zawartość do końca animacji; dopiero wtedy
+     zamknij <details>. W przeciwnym razie tekst znika w jednej klatce. */
+  if (!open) packageCards.forEach(card => { card.open = true; });
+  packagesGrid.style.height = `${from}px`;
+  packagesGrid.style.overflow = "hidden";
+
+  const finish = () => {
+    packageCards.forEach(card => { card.open = open; });
+    packagesGrid.style.height = "";
+    packagesGrid.style.overflow = "";
+    packagesToggle.disabled = false;
+    if (!open && Math.abs(packagesGrid.getBoundingClientRect().top - 100) > 90) {
+      packagesGrid.scrollIntoView({ behavior: reduceMotion ? "instant" : "smooth", block: "start" });
+    }
+  };
+
+  if (!reduceMotion && packagesGrid.animate) {
+    const animation = packagesGrid.animate(
+      [{ height: `${from}px` }, { height: `${to}px` }],
+      { duration: 780, easing: "cubic-bezier(.25,.1,.25,1)" }
+    );
+    packageCards.forEach(card => card.querySelector(".package-card__body")?.animate(
+      open ? [{ opacity: 0, transform: "translateY(12px)" }, { opacity: 1, transform: "translateY(0)" }]
+           : [{ opacity: 1 }, { opacity: 0 }],
+      { duration: open ? 550 : 420, delay: open ? 140 : 0, fill: "none", easing: "ease-out" }
+    ));
+    animation.onfinish = finish;
+  } else {
+    finish();
+  }
+  packagesToggle.setAttribute("aria-expanded", String(open));
+  packagesToggle.querySelector("[data-packages-toggle-label]").textContent = open ? "Zwiń opisy pakietów" : "Rozwiń opisy pakietów";
+});
+
+/* Kalendarz jest aktywowany dopiero po ustawieniu rzeczywistego adresu wydarzenia. */
+const consultationCalendar = document.querySelector("[data-calendly-url]");
+if (consultationCalendar) {
+  const url = consultationCalendar.dataset.calendlyUrl.trim();
+  const widget = consultationCalendar.querySelector("[data-calendly-widget]");
+  const pending = consultationCalendar.querySelector("[data-calendly-pending]");
+  let valid = false;
+  try { valid = new URL(url).hostname === "calendly.com"; } catch (_) { /* Brak linku wydarzenia. */ }
+  if (valid && widget) {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.onload = () => {
+      if (!window.Calendly?.initInlineWidget) return;
+      widget.hidden = false;
+      window.Calendly.initInlineWidget({ url, parentElement: widget });
+      if (pending) pending.hidden = true;
+    };
+    document.head.append(script);
+  }
+}
 
 /* Galeria na pełnym ekranie ma całkowicie zatrzymać stronę pod spodem.
    Samo overflow:hidden nie wystarcza na iOS, dlatego zapamiętujemy pozycję
@@ -201,6 +289,7 @@ const openModal = card => {
     .split(",")
     .map(source => source.trim())
     .filter(Boolean);
+  modalImages = gallery;
   const galleryAltLabels = (card.dataset.galleryAlts || "")
     .split("|")
     .map(label => label.trim());
@@ -251,6 +340,7 @@ const closeModal = () => {
   }
   modalThumbs?.replaceChildren();
   modalGalleryAlts = new Map();
+  modalImages = [];
   lastFocus?.focus?.({ preventScroll: true });
 };
 document.addEventListener("click", event => {
@@ -263,6 +353,8 @@ modal?.addEventListener("click", event => {
 });
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
+  if (modal?.classList.contains("is-open") && event.key === "ArrowLeft") stepModalImage(-1);
+  if (modal?.classList.contains("is-open") && event.key === "ArrowRight") stepModalImage(1);
 });
 
 /* Infinite, slow project carousel */
@@ -555,8 +647,14 @@ faqItems.forEach(item => {
   });
 });
 
-/* Packages + dodatkowe usługi — ten sam silnik, każdy kafel niezależnie */
-document.querySelectorAll(".package-card, .extra-service").forEach(item => {
+/* Karty pakietów mają jeden wspólny przycisk. Dodatkowe usługi otwierają się osobno. */
+document.querySelectorAll(".package-card").forEach(item => {
+  item.querySelector(":scope > summary")?.addEventListener("click", event => {
+    event.preventDefault();
+    packagesToggle?.click();
+  });
+});
+document.querySelectorAll(".extra-service").forEach(item => {
   const summary = item.querySelector(":scope > summary");
   if (!summary) return;
 
@@ -690,8 +788,33 @@ if (embeddedMap && embeddedMapFrame) {
 }
 
 /* Success message */
+document.querySelectorAll(".contact-form input[name='_next']").forEach(input => {
+  const section = document.querySelector("#formularz") ? "formularz" : "kontakt";
+  input.value = `${location.origin}${location.pathname}?wyslano=1#${section}`;
+});
 const params = new URLSearchParams(location.search);
-if (params.get("wyslano") === "1") document.querySelector("[data-success]")?.classList.add("is-visible");
+if (params.get("wyslano") === "1") {
+  document.querySelector("[data-success]")?.classList.add("is-visible");
+  document.querySelectorAll(".contact__form-head").forEach(head => {
+    head.classList.add("is-sent");
+    head.querySelector("h3").textContent = "Dziękujemy za kontakt";
+    head.querySelector(".section-label").textContent = "Zapraszamy do obejrzenia naszych projektów, a my przygotujemy odpowiedź.";
+  });
+  document.querySelector(".contact-form")?.setAttribute("hidden", "");
+  const success = document.querySelector("[data-success]");
+  if (success) {
+    success.removeAttribute("hidden");
+    success.closest(".contact__page--right")?.append(success);
+  }
+}
+
+document.querySelector("[data-pdf-preview]")?.addEventListener("click", event => {
+  const button = event.currentTarget;
+  const note = document.querySelector("[data-pdf-note]");
+  if (!note) return;
+  note.hidden = !note.hidden;
+  button.setAttribute("aria-expanded", String(!note.hidden));
+});
 
 window.addEventListener("beforeunload", () => cancelAnimationFrame(sliderRaf));
 
@@ -701,18 +824,23 @@ const packToggles = [...document.querySelectorAll("[data-pack-toggle]")];
 const packPanels = [...document.querySelectorAll("[data-pack-panel]")];
 
 if (packToggles.length && packPanels.length) {
-  const panelFor = id => packPanels.find(panel => panel.dataset.packPanel === id);
+  const panelAnimations = new WeakMap();
 
   const setPanel = (panel, open) => {
     const inner = panel.querySelector(".offer-matrix__panel-inner");
     if (!inner) return;
+    const previous = panelAnimations.get(panel);
+    if (previous) {
+      previous.onfinish = null;
+      previous.cancel();
+    }
+    const from = panel.getBoundingClientRect().height;
     panel.setAttribute("aria-hidden", String(!open));
     panel.classList.toggle("is-open", open);
     if (reduceMotion) {
       panel.style.height = open ? "auto" : "0px";
       return;
     }
-    const from = panel.getBoundingClientRect().height;
     const to = open ? inner.getBoundingClientRect().height : 0;
     panel.style.height = `${from}px`;
     panel.getBoundingClientRect();
@@ -720,8 +848,11 @@ if (packToggles.length && packPanels.length) {
       [{ height: `${from}px` }, { height: `${to}px` }],
       { duration: open ? 360 : 290, easing: "cubic-bezier(.2,.75,.25,1)" }
     );
+    panelAnimations.set(panel, animation);
     animation.onfinish = () => {
+      if (panelAnimations.get(panel) !== animation) return;
       panel.style.height = open ? "auto" : "0px";
+      panelAnimations.delete(panel);
     };
   };
 
@@ -732,7 +863,6 @@ if (packToggles.length && packPanels.length) {
 
   packToggles.forEach(toggle => {
     toggle.addEventListener("click", () => {
-      trzymajWMiejscu(toggle);
       const id = toggle.dataset.packToggle;
       const willOpen = toggle.getAttribute("aria-expanded") !== "true";
 

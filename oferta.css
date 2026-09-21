@@ -1322,3 +1322,171 @@
 .extra-service__more i {
   border-radius: 999px 999px 4px 999px;
 }
+
+/* Poprawki klienta: równa skala pisma, wyraźniejsze wartości i Q&A. */
+.offer-matrix__table tbody th[scope="row"],
+.offer-matrix__panel-inner p,
+.offer-matrix__note,
+.offer-matrix__help p,
+.extra-service__body-inner p,
+.offer-consult__intro p {
+  font-size: 17px !important;
+  line-height: 1.62 !important;
+  color: var(--navy-dark) !important;
+}
+.offer-matrix__group th {
+  font-family: var(--display) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+.offer-matrix__table .of-yes { font-size: 27px; }
+.offer-matrix__table .of-val { font-size: 29px; }
+.offer-matrix__pack.is-open .offer-matrix__more i {
+  border-radius: 50% !important;
+  transform: none;
+}
+.offer-matrix__pack.is-open .offer-matrix__more i::before { content: "↑"; }
+.offer-matrix__pack.is-open .offer-matrix__more i { font-size: 0; }
+.offer-matrix__pack.is-open .offer-matrix__more i::before { font-size: 15px; }
+.offer-matrix__note, .offer-matrix__help p { max-width: 720px; }
+.offer-matrix__pdf {
+  margin-top: 30px;
+  padding: 18px 24px;
+  border: 1px solid var(--navy);
+  border-radius: 28px 28px 4px 28px;
+  background: var(--paper);
+  color: var(--navy);
+  font: 18px var(--display);
+  cursor: pointer;
+}
+.offer-matrix__pdf-note { color: var(--navy); font-size: 17px; }
+.offer-matrix__panel { scroll-margin-top: calc(var(--header-h) + 22px); }
+.extra-service__body-inner p { text-align: left; hyphens: none; }
+
+/* Wyrównanie nagłówków i wartości w tych samych kolumnach tabeli. */
+.offer-matrix__table { table-layout: fixed; }
+.offer-matrix__table thead th:not(.offer-matrix__corner) { text-align: center; }
+.offer-matrix__pack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.offer-matrix__table tbody td { text-align: center; vertical-align: middle; }
+.offer-matrix__table tbody td .of-yes,
+.offer-matrix__table tbody td .of-no,
+.offer-matrix__table tbody td .of-val { display: inline-block; text-align: center; }
+
+/* Jedna, czytelna strzałka w okręgu, obracana po rozwinięciu. */
+.offer-matrix__more,
+.extra-service__more { display: inline-flex; align-items: center; gap: 10px; }
+.offer-matrix__more i,
+.extra-service__more i {
+  position: relative;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0;
+  transform: none;
+}
+.offer-matrix__more i::after,
+.extra-service__more i::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .25s ease;
+}
+.offer-matrix__pack.is-open .offer-matrix__more i,
+.extra-service[open] .extra-service__more i { transform: none; background: var(--navy); color: #fff; }
+.offer-matrix__pack.is-open .offer-matrix__more i::after,
+.extra-service[open] .extra-service__more i::after { transform: translateY(2px) rotate(225deg); }
+
+/* Usługi jako kafle harmonijki, bez pytań pod nazwami. */
+.offer-extra__list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.offer-extra__list .extra-service {
+  min-width: 0;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+.offer-extra__list .extra-service > summary {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-content: center;
+  min-height: 136px;
+}
+.offer-extra__list .extra-service__more { grid-column: 1; grid-row: auto; }
+@media (max-width: 700px) {
+  .offer-extra__list { grid-template-columns: 1fr; }
+}
+
+/* Otwarta usługa nie rozciąga sąsiedniego, nadal zamkniętego kafla. */
+.offer-extra__list { align-items: start; }
+.offer-extra__list .extra-service { align-self: start; }
+
+
+.offer-matrix__pack.is-open .offer-matrix__more i::before { content: none; }
+
+/* Strzałki równo w osi podpisu, bez zastępczego znaku tekstowego. */
+.offer-matrix__more i, .extra-service__more i { display: grid; place-items: center; transform: none !important; }
+.offer-matrix__more i::before, .offer-matrix__more i::after,
+.extra-service__more i::before, .extra-service__more i::after { content: none !important; }
+.offer-matrix__more i svg, .extra-service__more i svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .3s ease;
+}
+.offer-matrix__pack.is-open .offer-matrix__more i svg,
+.extra-service[open] .extra-service__more i svg { transform: rotate(180deg); }
+
+/* Wartości w tabeli są optycznie na osi nagłówków pakietów. */
+.offer-matrix__table tbody td { padding-inline: 0; text-align: center; }
+.offer-matrix__table tbody td .of-yes,
+.offer-matrix__table tbody td .of-val {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+}
+.offer-matrix__table tbody td .of-yes { font-family: Arial, sans-serif; font-size: 27px; }
+
+/* Dodatkowe usługi mają formę zaokrąglonych kafli pytań z głównej strony. */
+.offer-extra__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; border: 0; }
+.offer-extra__list .extra-service {
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  box-shadow: 0 1px 0 rgba(40,61,104,.1);
+}
+.offer-extra__list .extra-service > summary {
+  min-height: 126px;
+  padding: 24px 30px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+}
+.offer-extra__list .extra-service__more { grid-column: 2; grid-row: 1; font-size: 0; }
+.offer-extra__list .extra-service__title { font-size: clamp(21px, 2vw, 27px); line-height: 1.3; }
+@media (max-width: 700px) {
+  .offer-extra__list { grid-template-columns: 1fr; }
+}
+
+/* Sam tytuł w kaflu; kliknięcie całej powierzchni rozwija opis. */
+.offer-extra__list .extra-service > summary { grid-template-columns: minmax(0, 1fr); }
