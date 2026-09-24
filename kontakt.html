@@ -37,6 +37,12 @@
     </nav>
 
     <div class="header-actions">
+      <a class="social social--header" href="https://www.facebook.com/61583774015406/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg><use href="#icon-facebook"></use></svg>
+      </a>
+      <a class="social social--header" href="https://www.instagram.com/to_oni_projektuja/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg><use href="#icon-instagram"></use></svg>
+      </a>
       <a class="drop-button drop-button--small" href="kontakt.html#formularz">
         Skontaktuj się z nami
         <svg><use href="#icon-arrow"></use></svg>
@@ -57,7 +63,14 @@
         Skontaktuj się z nami
         <svg><use href="#icon-arrow"></use></svg>
       </a>
-
+      <div class="mobile-socials">
+        <a class="social" href="https://www.facebook.com/61583774015406/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg><use href="#icon-facebook"></use></svg>
+        </a>
+        <a class="social" href="https://www.instagram.com/to_oni_projektuja/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg><use href="#icon-instagram"></use></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -78,7 +91,7 @@
             <img src="logo-symbol.png" alt=""/>
             <span>Miejsce na wspólny portret Oliwii i Jakuba</span>
           </div>
-
+          
         </figure>
       </div>
     </section>
@@ -92,7 +105,7 @@
 </div>
 <div class="offer-consult__intro">
 <p>Konsultacja jest osobną usługą — nie traktujemy jej jako pakietu projektowego. To dobre rozwiązanie, kiedy chcesz sprawdzić lokal, uporządkować kierunek zmian albo skonsultować konkretne decyzje przed rozpoczęciem pełnego projektu.</p>
-<a class="line-link" href="#termin-konsultacji">Umów konsultację <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+<a class="line-link" href="#formularz">Umów konsultację <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
 </div>
 </div>
 <div class="offer-consult__journey reveal">
@@ -173,22 +186,44 @@
         </strong>
 </div>
 </div>
-
+<div class="contact__socials">
+<a href="https://www.facebook.com/61583774015406/" rel="noopener" target="_blank">
+<span class="social">
+<svg>
+<use href="#icon-facebook">
+</use>
+</svg>
+</span>
+<strong>
+         Facebook
+        </strong>
+</a>
+<a href="https://www.instagram.com/to_oni_projektuja/" rel="noopener" target="_blank">
+<span class="social">
+<svg>
+<use href="#icon-instagram">
+</use>
+</svg>
+</span>
+<strong>
+         Instagram
+        </strong>
+</a>
+</div>
 </div>
 <div class="contact__page contact__page--right reveal">
 <div class="contact__form-head">
 <h3>
-        Dziękujemy za kontakt
+        Zacznijmy od konkretów
        </h3>
 <p class="section-label">
         Nowa inwestycja
        </p>
 </div>
-<form action="https://formsubmit.co/tooniprojektuja@gmail.com" class="contact-form" id="contact-inquiry" method="POST">
+<form action="https://formsubmit.co/tooniprojektuja@gmail.com" class="contact-form" method="POST">
 <input name="_subject" type="hidden" value="Nowe zapytanie - To Oni Projektują"/>
-<input name="_next" type="hidden" value="https://jakubskrzypiec.github.io/projektant/kontakt.html?wyslano=1#formularz"/>
+<input name="_next" type="hidden" value="https://jakubskrzypiec.github.io/tooniprojektujaa/kontakt.html?wyslano=1#formularz"/>
 <input name="_template" type="hidden" value="table"/>
-<input name="_autoresponse" type="hidden" value="Dziękujemy za kontakt z To Oni Projektują. Otrzymaliśmy Twoją wiadomość i odezwiemy się w sprawie projektu."/>
 <input name="_captcha" type="hidden" value="false"/>
 <input autocomplete="off" class="honey" name="_honey" tabindex="-1" type="text"/>
 <div class="form-row">
@@ -210,7 +245,7 @@
 <span>
           E-mail
          </span>
-<input autocomplete="email" name="email" required="" type="email"/>
+<input autocomplete="email" name="_replyto" required="" type="email"/>
 </label>
 <label>
 <span>
@@ -233,7 +268,6 @@
 <input name="Termin" type="text"/>
 </label>
 </div>
-
 <label>
 <span>
          Informacje o Inwestycji
@@ -246,7 +280,7 @@
 <i>
 </i>
 <span>
-          Zgadzam się na kontakt<br/>w sprawie projektu.
+          Zgadzam się na kontakt w sprawie projektu.
          </span>
 </label>
 <button class="drop-button" type="submit">
@@ -265,19 +299,6 @@
 </div>
 </section>
 
-
-<section class="consultation-section section" aria-label="Umów konsultację projektową">
-<div class="shell">
-<div class="consultation-section__calendar" id="termin-konsultacji" data-calendly-url="">
-<h2>Umów konsultację projektową</h2>
-<div class="calendly-inline-widget" data-calendly-widget hidden></div>
-<div class="consultation-section__pending" data-calendly-pending>
-<p>Terminarz konsultacji będzie dostępny wkrótce. Napisz do nas, aby ustalić termin spotkania.</p>
-<a class="line-link" href="#formularz">Przejdź do formularza <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
-</div>
-</div>
-</div>
-</section>
     <section class="map-section" id="lokalizacja">
       <div class="shell map-section__head reveal">
         <div>
@@ -299,7 +320,45 @@
       </div>
     </section>
 
+    <section class="contact-socials-bottom" aria-labelledby="social-heading">
+      <div class="shell reveal">
+        <div class="contact-socials-card">
+          <div class="contact-socials-card__intro">
+            <p class="section-label">Online</p>
+            <h2 id="social-heading">Zobacz, co dzieje się u nas na bieżąco.</h2>
+            <p>Realizacje, kulisy pracy i rzeczy, które aktualnie zajmują nasze głowy, pokazujemy również w social mediach.</p>
+          </div>
 
+          <div class="contact-socials-card__table" aria-label="Social media To Oni Projektują">
+            <a class="contact-socials-row" href="https://www.instagram.com/to_oni_projektuja/" target="_blank" rel="noopener">
+              <span class="contact-socials-row__icon" aria-hidden="true">
+                <svg><use href="#icon-instagram"></use></svg>
+              </span>
+              <span class="contact-socials-row__copy">
+                <strong>Instagram</strong>
+                <small>@to_oni_projektuja</small>
+              </span>
+              <span class="contact-socials-row__arrow" aria-hidden="true">
+                <svg><use href="#icon-arrow"></use></svg>
+              </span>
+            </a>
+
+            <a class="contact-socials-row" href="https://www.facebook.com/61583774015406/" target="_blank" rel="noopener">
+              <span class="contact-socials-row__icon" aria-hidden="true">
+                <svg><use href="#icon-facebook"></use></svg>
+              </span>
+              <span class="contact-socials-row__copy">
+                <strong>Facebook</strong>
+                <small>To Oni Projektują</small>
+              </span>
+              <span class="contact-socials-row__arrow" aria-hidden="true">
+                <svg><use href="#icon-arrow"></use></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -326,7 +385,14 @@
           <a href="tel:+48794530590">794 530 590</a>
         </div>
         <a class="footer__mail" href="mailto:tooniprojektuja@gmail.com">tooniprojektuja@gmail.com</a>
-
+        <div class="footer__socials">
+          <a class="social" href="https://www.facebook.com/61583774015406/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg><use href="#icon-facebook"></use></svg>
+          </a>
+          <a class="social" href="https://www.instagram.com/to_oni_projektuja/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="shell footer__bottom">
@@ -341,8 +407,6 @@
       <div class="modal__gallery">
         <div class="modal__main">
           <img class="modal__image" data-modal-image src="" alt=""/>
-<button class="modal__image-nav modal__image-nav--prev" data-image-prev type="button" aria-label="Poprzednie zdjęcie"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-arrow"></use></svg></button>
-<button class="modal__image-nav modal__image-nav--next" data-image-next type="button" aria-label="Następne zdjęcie"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#icon-arrow"></use></svg></button>
         </div>
         <div class="modal__thumbs" data-modal-thumbs></div>
       </div>
